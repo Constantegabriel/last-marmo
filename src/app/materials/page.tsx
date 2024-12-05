@@ -6,25 +6,32 @@ import Image from "next/image";
 const materials = [
   {
     id: 1,
-    title: "Mármore Branco",
-    price: 250.0,
-    description: "Elegante e clássico, perfeito para ambientes sofisticados.",
-    imageUrl: "/images/marble-white.jpg", // Substitua pelas suas imagens
+    title: "Mármore Travertino",
+    price: 500.00,
+    description: "Bege com veios, popular em áreas externas, como bordas de piscina.",
+    imageUrl: "/img/marm1.webp", // Substitua pelas suas imagens
   },
   {
     id: 2,
-    title: "Mármore Preto",
-    price: 300.0,
-    description: "Estilo moderno com um toque de requinte.",
-    imageUrl: "/images/marble-black.jpg", // Substitua pelas suas imagens
+    title: "Mármore Carrara",
+    price: 1200.00,
+    description: " Branco com veios cinzas, clássico e elegante, ideal para bancadas e pisos.",
+    imageUrl: "/img/marmo2.jpeg", // Substitua pelas suas imagens
   },
   {
     id: 3,
-    title: "Mármore Cinza",
-    price: 200.0,
-    description: "Ideal para um design contemporâneo.",
-    imageUrl: "/images/marble-gray.jpg", // Substitua pelas suas imagens
+    title: "Mármore Calacatta",
+    price: 2500.00,
+    description: "Branco puro com veios dourados ou cinza, altamente sofisticado para ambientes internos.",
+    imageUrl: "/img/marmo3.jpeg", // Substitua pelas suas imagens
   },
+  {
+    id: 4,
+    title: "Granito Preto Absoluto",
+    price: 900.00,
+    description: " Preto uniforme, resistente, ideal para cozinhas e banheiros modernos.",
+    imageUrl: "/img/marmo4.jpeg", // Substitua pelas suas imagens
+  },  
   // Adicione mais materiais conforme necessário
 ];
 

@@ -104,28 +104,28 @@ export default function Home() {
           Serviços de Qualidade para Cada Projeto
         </h2>
         <div className="flex flex-wrap justify-center gap-6">
-          <div className="text-center bg-gray-200 p-8 rounded-lg hover:shadow-lg transition w-full sm:w-[400px]">
+          <div className="text-center bg-gray-700 p-8 rounded-lg hover:shadow-lg transition w-full sm:w-[450px]">
             <GiBriefcase className="mx-auto text-[50px]" />
-            <h1 className="text-lg font-bold">PORTIFÓLIO</h1>
-            <p className="text-gray-600 text-sm mt-2">
+            <h1 className="text-gray-100 font-bold">PORTIFÓLIO</h1>
+            <p className="text-gray-100 text-sm mt-2">
               Inspire-se com nossos projetos realizados, criados com precisão e
               dedicação.
             </p>
           </div>
 
-          <div className="text-center bg-gray-200 p-8 rounded-lg hover:shadow-lg transition w-full sm:w-[400px]">
+          <div className="text-center bg-gray-700 p-8 rounded-lg hover:shadow-lg transition w-full sm:w-[450px]">
             <GiStoneBlock className="mx-auto text-[50px]" />
-            <h1 className="text-lg font-bold">PRODUTOS</h1>
-            <p className="text-gray-600 text-sm mt-2">
+            <h1 className="text-gray-100 font-bold">PRODUTOS</h1>
+            <p className="text-gray-100 text-sm mt-2">
               Trabalhamos com os melhores materiais para oferecer qualidade e
               sofisticação.
             </p>
           </div>
 
-          <div className="text-center bg-gray-200 p-8 rounded-lg hover:shadow-lg transition w-full sm:w-[400px]">
+          <div className="text-center bg-gray-700 p-8 rounded-lg hover:shadow-lg transition w-full sm:w-[450px]">
             <PiGearDuotone className="mx-auto text-[50px]" />
-            <h1 className="text-lg font-bold">MAQUINÁRIO</h1>
-            <p className="text-gray-600 text-sm mt-2">
+            <h1 className="text-gray-100 font-bold">MAQUINÁRIO</h1>
+            <p className="text-gray-100 text-sm mt-2">
               Modernos equipamentos e uma equipe qualificada garantem resultados
               superiores.
             </p>
@@ -141,10 +141,10 @@ export default function Home() {
             alt="Nossa Fachada"
             width={600}
             height={400}
-            className="w-[80%] border-l-[10px] border-gray-800 shadow-lg"
+            className="w-[70%] border-l-[20px] border-gray-800 shadow-lg"
           />
           <div>
-            <h2 className="text-2xl md:text-4xl font-bold mb-4">
+            <h2 className="text-gray-800 text-2xl md:text-4xl font-bold mb-4">
               Sobre a <span className="text-gray-800">Marmoraria Florianópolis</span>
             </h2>
             <p className="text-gray-600 mb-4">
@@ -190,9 +190,11 @@ export default function Home() {
           />
         </div>
         <div className="flex mt-[25px] lg:mt-[15px] justify-center">
+          <Link href="/services">
           <button className="px-7 py-2 rounded-md text-white font-medium bg-gray-800">
             Nossos Serviços
           </button>
+          </Link>
         </div>
       </div>
     </section>
