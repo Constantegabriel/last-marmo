@@ -71,7 +71,7 @@ export default function MaterialsPage() {
 
   const sendToWhatsApp = () => {
     const message = generateWhatsAppMessage();
-    const whatsappUrl = `https://wa.me/48998384426?text=${encodeURIComponent(
+    const whatsappUrl = `https://wa.me/48998143419?text=${encodeURIComponent(
       `Olá, gostaria de um orçamento para as seguintes pedras:\n\n${message}`
     )}`;
     window.open(whatsappUrl, "_blank");
