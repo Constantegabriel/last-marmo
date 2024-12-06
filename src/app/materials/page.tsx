@@ -15,45 +15,31 @@ interface Material {
 const materials: Material[] = [
   {
     id: 1,
-    title: "Mármore Branco",
-    price: 250.0,
-    description: "Elegante e clássico, perfeito para ambientes sofisticados.",
-    imageUrl: "/img/marmorebranco.jpg",
+    title: "Mármore Travertino",
+    price: 500.0,
+    description: "Bege com veios, popular em áreas externas, como bordas de piscina.",
+    imageUrl: "/img/marm1.webp",
   },
   {
     id: 2,
-    title: "Mármore Preto",
-    price: 300.0,
-    description: "Estilo moderno com um toque de requinte.",
-    imageUrl: "/img/marmorebranco.jpg",
+    title: "Mármore Carrara",
+    price: 1200.0,
+    description: "Branco com veios cinzas, clássico e elegante, ideal para bancadas e pisos.",
+    imageUrl: "/img/marmo2.jpeg",
   },
   {
     id: 3,
-    title: "Mármore Cinza",
-    price: 200.0,
-    description: "Ideal para um design contemporâneo.",
-    imageUrl: "/img/marmorebranco.jpg",
+    title: "Mármore Calacatta",
+    price: 2500.0,
+    description: "Branco puro com veios dourados ou cinza, altamente sofisticado para ambientes internos.",
+    imageUrl: "/img/marmo3.jpeg",
   },
   {
     id: 4,
-    title: "Mármore Branco",
-    price: 250.0,
-    description: "Elegante e clássico, perfeito para ambientes sofisticados.",
-    imageUrl: "/img/marmorebranco.jpg",
-  },
-  {
-    id: 5,
-    title: "Mármore Preto",
-    price: 300.0,
-    description: "Estilo moderno com um toque de requinte.",
-    imageUrl: "/img/marmorebranco.jpg",
-  },
-  {
-    id: 6,
-    title: "Mármore Cinza",
-    price: 200.0,
-    description: "Ideal para um design contemporâneo.",
-    imageUrl: "/img/marmorebranco.jpg",
+    title: "Granito Preto Absoluto",
+    price: 900.0,
+    description: "Preto uniforme, resistente, ideal para cozinhas e banheiros modernos.",
+    imageUrl: "/img/marmo4.jpeg",
   },
 ];
 
@@ -91,7 +77,6 @@ export default function MaterialsPage() {
     window.open(whatsappUrl, "_blank");
   };
 
-  // Efeito para desativar barra de rolagem da página
   useEffect(() => {
     if (isModalOpen) {
       document.body.classList.add("overflow-hidden");
@@ -136,7 +121,7 @@ export default function MaterialsPage() {
                   </h2>
                   <p className="text-gray-600 mt-2">Preço por m²:</p>
                   <p className="text-xl font-bold text-gray-900">
-                    R$ {material.price.toFixed(2)}
+                    R$ {new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL" }).format(material.price)}
                   </p>
                   <p className="text-gray-500 text-sm mt-2">
                     {material.description}
@@ -182,7 +167,7 @@ export default function MaterialsPage() {
                       {item.title}
                     </h3>
                     <p className="text-sm text-gray-500">
-                      R$ {item.price.toFixed(2)}
+                      R$ {new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL" }).format(item.price)}
                     </p>
                   </div>
                   <button
@@ -233,7 +218,7 @@ export default function MaterialsPage() {
                           {item.title}
                         </h3>
                         <p className="text-sm text-gray-500">
-                          R$ {item.price.toFixed(2)}
+                          R$ {new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL" }).format(item.price)}
                         </p>
                       </div>
                       <button
