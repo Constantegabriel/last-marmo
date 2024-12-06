@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "./components/navbar"; // Importando a Navbar
 import Footer from "./components/footer"; // Importando o Footer
+import Wpp from "./components/wpp";
 
 // Metadata personalizada
 export const metadata: Metadata = {
@@ -23,7 +24,7 @@ export default function RootLayout({
 
         {/* Conteúdo */}
         <main className="flex-grow">{children}</main>
-
+        <Wpp />
         {/* Footer */}
         <Footer />
       </body>

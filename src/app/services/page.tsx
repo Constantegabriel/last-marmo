@@ -41,7 +41,7 @@ export default function Services() {
   ];
 
   return (
-    <section className="bg-gray-50 mt-[69px] min-h-screen py-16 px-8 md:px-20">
+    <section className="bg-gray-50 mt-[130px] min-h-screen py-16 px-8 md:px-20">
       {/* Título da página */}
       <div className="text-center mb-16">
         <h1 className="text-5xl font-extrabold text-gray-800">

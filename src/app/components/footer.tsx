@@ -4,7 +4,7 @@ import logo from "../../../public/img/logo_marmo.png";
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-800 text-white py-14">
+    <footer className="relative z-100 bg-gray-800 text-white py-14">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 px-12">
         {/* Informações da empresa */}
         <div className="mt-[20px]">

@@ -99,7 +99,7 @@ export default function Home() {
       </Swiper>
 
       {/* Serviços em destaque */}
-      <div className="bg-gray-100 py-12 px-6 md:px-20">
+      <div className="bg-gray-100 text-gray-700 py-12 px-6 md:px-20">
         <h2 className="text-center text-gray-700 text-2xl md:text-4xl font-bold mb-8">
           Serviços de Qualidade para Cada Projeto
         </h2>
@@ -144,7 +144,7 @@ export default function Home() {
             className="w-[80%] border-l-[10px] border-gray-800 shadow-lg"
           />
           <div>
-            <h2 className="text-2xl md:text-4xl font-bold mb-4">
+            <h2 className="text-2xl text-gray-800 md:text-4xl font-bold mb-4">
               Sobre a <span className="text-gray-800">Marmoraria Florianópolis</span>
             </h2>
             <p className="text-gray-600 mb-4">

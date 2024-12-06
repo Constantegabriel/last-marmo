@@ -1,53 +1,126 @@
 "use client";
 
-import { AiOutlineShoppingCart } from "react-icons/ai";
+import { useState, useEffect } from "react";
+import { AiOutlineShoppingCart, AiOutlineDelete } from "react-icons/ai";
 import Image from "next/image";
 
-const materials = [
+interface Material {
+  id: number;
+  title: string;
+  price: number;
+  description: string;
+  imageUrl: string;
+}
+
+const materials: Material[] = [
   {
     id: 1,
     title: "Mármore Branco",
     price: 250.0,
     description: "Elegante e clássico, perfeito para ambientes sofisticados.",
-    imageUrl: "/images/marble-white.jpg", // Substitua pelas suas imagens
+    imageUrl: "/img/marmorebranco.jpg",
   },
   {
     id: 2,
     title: "Mármore Preto",
     price: 300.0,
     description: "Estilo moderno com um toque de requinte.",
-    imageUrl: "/images/marble-black.jpg", // Substitua pelas suas imagens
+    imageUrl: "/img/marmorebranco.jpg",
   },
   {
     id: 3,
     title: "Mármore Cinza",
     price: 200.0,
     description: "Ideal para um design contemporâneo.",
-    imageUrl: "/images/marble-gray.jpg", // Substitua pelas suas imagens
+    imageUrl: "/img/marmorebranco.jpg",
   },
-  // Adicione mais materiais conforme necessário
+  {
+    id: 4,
+    title: "Mármore Branco",
+    price: 250.0,
+    description: "Elegante e clássico, perfeito para ambientes sofisticados.",
+    imageUrl: "/img/marmorebranco.jpg",
+  },
+  {
+    id: 5,
+    title: "Mármore Preto",
+    price: 300.0,
+    description: "Estilo moderno com um toque de requinte.",
+    imageUrl: "/img/marmorebranco.jpg",
+  },
+  {
+    id: 6,
+    title: "Mármore Cinza",
+    price: 200.0,
+    description: "Ideal para um design contemporâneo.",
+    imageUrl: "/img/marmorebranco.jpg",
+  },
 ];
 
 export default function MaterialsPage() {
-  return (
-    <div className="bg-gray-50 min-h-screen py-12">
-      <div className="container mx-auto px-6">
-        <h1 className="text-4xl font-bold text-center text-gray-800 mb-12">
-          Descubra Nossos Mármores Exclusivos
-        </h1>
+  const [cart, setCart] = useState<Material[]>([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-        {materials.length === 0 ? (
-          <p className="text-center text-gray-500 text-xl">
-            Nenhum material encontrado.
+  const addToCart = (material: Material) => {
+    if (!cart.find((item) => item.id === material.id)) {
+      setCart([...cart, material]);
+    }
+  };
+
+  const removeFromCart = (id: number) => {
+    setCart(cart.filter((item) => item.id !== id));
+  };
+
+  const generateWhatsAppMessage = () => {
+    if (cart.length === 0) return "";
+    return cart
+      .map(
+        (item) =>
+          `*${item.title}* - R$ ${item.price.toFixed(
+            2
+          )}\nDescrição: ${item.description}`
+      )
+      .join("\n\n");
+  };
+
+  const sendToWhatsApp = () => {
+    const message = generateWhatsAppMessage();
+    const whatsappUrl = `https://wa.me/48998384426?text=${encodeURIComponent(
+      `Olá, gostaria de um orçamento para as seguintes pedras:\n\n${message}`
+    )}`;
+    window.open(whatsappUrl, "_blank");
+  };
+
+  // Efeito para desativar barra de rolagem da página
+  useEffect(() => {
+    if (isModalOpen) {
+      document.body.classList.add("overflow-hidden");
+    } else {
+      document.body.classList.remove("overflow-hidden");
+    }
+    return () => {
+      document.body.classList.remove("overflow-hidden");
+    };
+  }, [isModalOpen]);
+
+  return (
+    <div className="relative flex flex-col min-h-screen">
+      <div className="flex-1 md:mr-[350px] bg-gray-50 pt-[150px]">
+        <div className="p-6">
+          <h1 className="text-3xl md:text-5xl font-extrabold text-left text-gray-800 mb-6">
+            Descubra Nossos Mármores Exclusivos
+          </h1>
+          <p className="text-left text-gray-600 text-lg max-w-2xl mb-12">
+            Selecione as pedras que você gostou e adicione ao carrinho. Em
+            seguida, clique em 'Enviar' para que possamos consultar e preparar
+            seu orçamento personalizado!
           </p>
-        ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {materials.map((material) => (
               <div
                 key={material.id}
                 className="bg-white rounded-lg shadow-md hover:shadow-xl transition-transform transform hover:scale-105"
               >
-                {/* Imagem */}
                 <div className="w-full h-56 relative">
                   <Image
                     src={material.imageUrl}
@@ -57,22 +130,20 @@ export default function MaterialsPage() {
                     className="rounded-t-lg object-cover"
                   />
                 </div>
-
-                {/* Detalhes */}
                 <div className="p-4">
                   <h2 className="text-xl font-semibold text-gray-800">
                     {material.title}
                   </h2>
                   <p className="text-gray-600 mt-2">Preço por m²:</p>
-                  <p className="text-xl font-bold text-green-600">
+                  <p className="text-xl font-bold text-gray-900">
                     R$ {material.price.toFixed(2)}
                   </p>
                   <p className="text-gray-500 text-sm mt-2">
                     {material.description}
                   </p>
-
                   <button
-                    className="w-full bg-blue-600 hover:bg-blue-700 text-white text-lg font-medium mt-4 py-2 rounded-md flex items-center justify-center transition-colors"
+                    onClick={() => addToCart(material)}
+                    className="w-full bg-gray-800 hover:bg-gray-900 text-white text-lg font-medium mt-4 py-2 rounded-md flex items-center justify-center transition-colors"
                   >
                     <AiOutlineShoppingCart className="mr-2" /> Adicionar ao
                     Carrinho
@@ -81,8 +152,112 @@ export default function MaterialsPage() {
               </div>
             ))}
           </div>
+        </div>
+      </div>
+
+      <button
+        className="md:hidden fixed bottom-4 right-4 bg-gray-800 text-white px-6 py-3 rounded-full shadow-lg flex items-center gap-2"
+        onClick={() => setIsModalOpen(true)}
+      >
+        <AiOutlineShoppingCart className="text-2xl" />
+        Meu Carrinho &gt;
+      </button>
+
+      <div className="hidden md:flex w-[350px] bg-gray-100 border-l border-gray-300 fixed top-0 right-0 h-full shadow-lg flex-col">
+        <h2 className="text-2xl font-bold text-gray-800 mb-4 px-4 mt-[150px]">
+          Carrinho de Materiais
+        </h2>
+        <div className="flex-1 overflow-y-auto px-4">
+          {cart.length === 0 ? (
+            <p className="text-gray-500">Seu carrinho está vazio.</p>
+          ) : (
+            <ul className="space-y-4">
+              {cart.map((item) => (
+                <li
+                  key={item.id}
+                  className="bg-white p-3 rounded shadow flex justify-between items-center"
+                >
+                  <div>
+                    <h3 className="text-lg font-semibold text-gray-800">
+                      {item.title}
+                    </h3>
+                    <p className="text-sm text-gray-500">
+                      R$ {item.price.toFixed(2)}
+                    </p>
+                  </div>
+                  <button
+                    onClick={() => removeFromCart(item.id)}
+                    className="text-red-600 hover:text-red-800"
+                  >
+                    <AiOutlineDelete className="text-2xl" />
+                  </button>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+        {cart.length > 0 && (
+          <button
+            onClick={sendToWhatsApp}
+            className="m-5 bg-green-500 hover:bg-green-600 text-white text-lg font-medium py-3 rounded-md flex items-center justify-center transition-colors px-4"
+          >
+            Enviar para WhatsApp
+          </button>
         )}
       </div>
+
+      {isModalOpen && (
+        <div className="fixed pt-[145px] inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
+          <div className="bg-white w-full h-full p-6 relative overflow-y-auto">
+            <button
+              onClick={() => setIsModalOpen(false)}
+              className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 text-2xl"
+            >
+              &times;
+            </button>
+            <h2 className="text-2xl font-bold text-gray-800 mb-4">
+              Carrinho de Materiais
+            </h2>
+            <div className="flex-1 overflow-y-auto">
+              {cart.length === 0 ? (
+                <p className="text-gray-500">Seu carrinho está vazio.</p>
+              ) : (
+                <ul className="space-y-4">
+                  {cart.map((item) => (
+                    <li
+                      key={item.id}
+                      className="bg-white p-3 rounded shadow flex justify-between items-center"
+                    >
+                      <div>
+                        <h3 className="text-lg font-semibold text-gray-800">
+                          {item.title}
+                        </h3>
+                        <p className="text-sm text-gray-500">
+                          R$ {item.price.toFixed(2)}
+                        </p>
+                      </div>
+                      <button
+                        onClick={() => removeFromCart(item.id)}
+                        className="text-red-600 hover:text-red-800"
+                      >
+                        <AiOutlineDelete className="text-2xl" />
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+            {cart.length > 0 && (
+              <button
+                onClick={sendToWhatsApp}
+                className="w-full mt-6 bg-green-500 hover:bg-green-600 text-white text-lg font-medium py-3 rounded-md flex items-center justify-center transition-colors"
+              >
+                Enviar para WhatsApp
+              </button>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   );
 }
