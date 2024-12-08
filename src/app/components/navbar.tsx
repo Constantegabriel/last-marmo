@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { FaPhoneAlt, FaWhatsapp } from "react-icons/fa"; // Importando ícones
+import { FaPhoneAlt, FaWhatsapp } from "react-icons/fa";
 import logo from "../../../public/img/logo_marmo.png";
 import { useState, useEffect } from "react";
 
@@ -12,7 +12,6 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      // Oculta a faixa de contato ao rolar a página
       setShowContactBar(window.scrollY <= 100);
     };
 
@@ -32,7 +31,7 @@ export default function Navbar() {
         } flex items-center gap-6`}
       >
         <div className="hidden md:flex items-center gap-2">
-            Entre em contato conosco!
+          Entre em contato conosco!
         </div>
         <div className="flex text-[13px] md:text-[15px] text-center md:text-left items-center gap-2">
           <FaPhoneAlt />
@@ -93,45 +92,67 @@ export default function Navbar() {
         </div>
 
         {/* Links (Mobile) */}
-        {menuOpen && (
-          <div className="md:hidden flex flex-col gap-4 mt-4 text-[16px] font-medium text-left px-[5%] py-4 rounded-md">
-            <Link
-              href="/"
-              className="hover:text-gray-300"
-              onClick={() => setMenuOpen(false)}
-            >
-              Home
-            </Link>
-            <Link
-              href="/materials"
-              className="hover:text-gray-300"
-              onClick={() => setMenuOpen(false)}
-            >
-              Materiais
-            </Link>
-            <Link
-              href="/services"
-              className="hover:text-gray-300"
-              onClick={() => setMenuOpen(false)}
-            >
-              Serviços
-            </Link>
-            <Link
-              href="/enterprise"
-              className="hover:text-gray-300"
-              onClick={() => setMenuOpen(false)}
-            >
-              Empresa
-            </Link>
-            <Link
-              href="/contact"
-              className="hover:text-gray-300"
-              onClick={() => setMenuOpen(false)}
-            >
-              Contato
+        <div
+          className={`md:hidden fixed top-0 left-0 w-full h-screen bg-gray-900 bg-opacity-95 backdrop-blur-md z-[800] flex flex-col items-center justify-center gap-6 text-[20px] font-medium transform transition-transform duration-500 ${
+            menuOpen ? "translate-y-0" : "-translate-y-full"
+          }`}
+        >
+          {/* Logo no topo esquerdo */}
+          <div className="absolute top-7 left-6">
+            <Link href="/" onClick={() => setMenuOpen(false)}>
+              <Image
+                src={logo}
+                alt="Logo Marmoraria Florianópolis"
+                width={150}
+                height={50}
+                className="object-contain"
+              />
             </Link>
           </div>
-        )}
+
+          <button
+            onClick={() => setMenuOpen(false)}
+            className="absolute top-6 right-6 text-[35px] text-white"
+          >
+            ✕
+          </button>
+
+          <Link
+            href="/"
+            className="hover:text-gray-300"
+            onClick={() => setMenuOpen(false)}
+          >
+            Home
+          </Link>
+          <Link
+            href="/materials"
+            className="hover:text-gray-300"
+            onClick={() => setMenuOpen(false)}
+          >
+            Materiais
+          </Link>
+          <Link
+            href="/services"
+            className="hover:text-gray-300"
+            onClick={() => setMenuOpen(false)}
+          >
+            Serviços
+          </Link>
+          <Link
+            href="/enterprise"
+            className="hover:text-gray-300"
+            onClick={() => setMenuOpen(false)}
+          >
+            Empresa
+          </Link>
+          <Link
+            href="/contact"
+            className="hover:text-gray-300"
+            onClick={() => setMenuOpen(false)}
+          >
+            Contato
+          </Link>
+        </div>
       </nav>
     </>
   );

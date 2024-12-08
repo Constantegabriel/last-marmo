@@ -31,7 +31,7 @@ export default function Wpp() {
       }`}
       title="Converse conosco no WhatsApp"
     >
-      <FaWhatsapp className="text-[50px]" />
+      <FaWhatsapp className="text-[35px] md:text-[50px]" />
     </a>
   );
 }

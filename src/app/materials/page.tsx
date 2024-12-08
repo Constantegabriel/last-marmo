@@ -46,10 +46,25 @@ const materials: Material[] = [
 export default function MaterialsPage() {
   const [cart, setCart] = useState<Material[]>([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [showAlert, setShowAlert] = useState(false);
+  const [isExiting, setIsExiting] = useState(false);
 
+  const showTemporaryAlert = () => {
+    setShowAlert(true);
+    setIsExiting(false);
+    setTimeout(() => {
+        setIsExiting(true);
+        setTimeout(() => {
+        setShowAlert(false);
+        }, 500); // Tempo igual à duração da animação de saída
+    }, 2000); // Alerta visível por 2 segundos
+  };
+
+  
   const addToCart = (material: Material) => {
     if (!cart.find((item) => item.id === material.id)) {
       setCart([...cart, material]);
+      showTemporaryAlert(); // Mostra o alerta
     }
   };
 
@@ -90,6 +105,16 @@ export default function MaterialsPage() {
 
   return (
     <div className="relative flex flex-col min-h-screen">
+        {showAlert && (
+        <div
+        className={`fixed top-[140px] left-0 z-50 bg-gray-800 rounded-r border-white border-r-[3px] border-b-[3px] shadow-lg text-white px-4 py-2 ${
+          isExiting ? "animate-slide-out" : "animate-slide-in"
+        }`}
+      >
+        Material adicionado ao carrinho!
+      </div>
+      
+        )}
       <div className="flex-1 md:mr-[350px] bg-gray-50 pt-[150px]">
         <div className="p-6">
           <h1 className="text-3xl md:text-5xl font-extrabold text-left text-gray-800 mb-6">
@@ -97,14 +122,14 @@ export default function MaterialsPage() {
           </h1>
           <p className="text-left text-gray-600 text-lg max-w-2xl mb-12">
             Selecione as pedras que você gostou e adicione ao carrinho. Em
-            seguida, clique em 'Enviar' para que possamos consultar e preparar
+            seguida, clique em 'Enviar para WhatsApp' para que possamos consultar e preparar
             seu orçamento personalizado!
           </p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 max-w-[1152px]:grid-cols-2 gap-8">
             {materials.map((material) => (
               <div
                 key={material.id}
-                className="bg-white rounded-lg shadow-md hover:shadow-xl transition-transform transform hover:scale-105"
+                className="rounded-lg hover:shadow-xl transition-transform transform hover:scale-105"
               >
                 <div className="w-full h-56 relative">
                   <Image
@@ -112,7 +137,7 @@ export default function MaterialsPage() {
                     alt={material.title}
                     fill
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    className="rounded-t-lg object-cover"
+                    className="object-cover"
                   />
                 </div>
                 <div className="p-4">
@@ -144,13 +169,13 @@ export default function MaterialsPage() {
         className="md:hidden fixed bottom-4 right-4 bg-gray-800 text-white px-6 py-3 rounded-full shadow-lg flex items-center gap-2"
         onClick={() => setIsModalOpen(true)}
       >
-        <AiOutlineShoppingCart className="text-2xl" />
-        Meu Carrinho &gt;
+        <AiOutlineShoppingCart className="text-2xl mt-[-2px]" />
+        Meu Carrinho
       </button>
 
       <div className="hidden md:flex w-[350px] bg-gray-100 border-l border-gray-300 fixed top-0 right-0 h-full shadow-lg flex-col">
-        <h2 className="text-2xl font-bold text-gray-800 mb-4 px-4 mt-[150px]">
-          Carrinho de Materiais
+        <h2 className="text-2xl flex font-bold text-gray-800 mb-4 px-4 mt-[150px]">
+        <AiOutlineShoppingCart className="mr-2 mt-[3px]" /> Carrinho de Materiais
         </h2>
         <div className="flex-1 overflow-y-auto px-4">
           {cart.length === 0 ? (
@@ -196,12 +221,12 @@ export default function MaterialsPage() {
           <div className="bg-white w-full h-full p-6 relative overflow-y-auto">
             <button
               onClick={() => setIsModalOpen(false)}
-              className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 text-2xl"
+              className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 text-4xl"
             >
               &times;
             </button>
-            <h2 className="text-2xl font-bold text-gray-800 mb-4">
-              Carrinho de Materiais
+            <h2 className="text-2xl flex font-bold text-gray-800 mb-4">
+                <AiOutlineShoppingCart className="mr-2 mt-[3px]" /> Carrinho de Materiais
             </h2>
             <div className="flex-1 overflow-y-auto">
               {cart.length === 0 ? (
