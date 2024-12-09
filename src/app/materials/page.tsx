@@ -18,63 +18,63 @@ const materials: Material[] = [
     title: "Mármore Carrara",
     price: 1200.00,
     description: "Mármore italiano branco com veios cinza suaves, símbolo de luxo e elegância.",
-    imageUrl: "/img/last1.jpeg",
+    imageUrl: "/img/carrara1.jpg",
   },
   {
     id: 2,
     title: "Mármore Calacatta",
     price: 2000.00,
     description: "Mármore raro com fundo branco puro e veios grossos dourados ou cinzas.",
-    imageUrl: "/img/last2.jpeg",
+    imageUrl: "/img/calagd.jpg",
   },
   {
     id: 3,
     title: "Mármore Nero Marquina",
     price: 1500.00,
     description: "Mármore preto com veios brancos finos, ideal para ambientes sofisticados.",
-    imageUrl: "/img/last3.jpeg",
+    imageUrl: "/img/nero1.jpg",
   },
   {
     id: 4,
     title: "Mármore Travertino",
     price: 800.00,
     description: "Pedra bege ou creme com textura natural e veios lineares; usada em pisos e revestimentos.",
-    imageUrl: "/img/last4.jpeg",
+    imageUrl: "/img/travertino.webp",
   },
   {
     id: 5,
     title: "Granito Preto Absoluto",
     price: 900.00,
     description: "Granito preto uniforme, conhecido pela resistência e beleza discreta.",
-    imageUrl: "/img/last5.jpeg",
+    imageUrl: "/img/pretoabs.jpg",
   },
   {
     id: 6,
     title: "Granito Branco Siena",
     price: 600.00,
     description: "Pedra clara com veios cinzas e manchas suaves, muito usada em cozinhas e banheiros.",
-    imageUrl: "/img/last6.jpeg",
+    imageUrl: "/img/brancosie.jpg",
   },
   {
     id: 7,
-    title: "Quartzo Calacatta Luxo",
+    title: "Quartzo Wakanda",
     price: 1800.00,
-    description: "Superfície industrializada que imita o mármore Calacatta com alta resistência.",
-    imageUrl: "/img/last7.jpeg",
+    description: "Quartzo de tonalidade preta com veios prateados, ideal para ambientes modernos e sofisticados.",
+    imageUrl: "/img/waka.jpg",
   },
   {
     id: 8,
     title: "Onix Cristal",
     price: 3000.00,
     description: "Pedra translúcida que pode ser retroiluminada, perfeita para detalhes exclusivos.",
-    imageUrl: "/img/last8.jpeg",
+    imageUrl: "/img/onix.jpg",
   },
   {
     id: 9,
     title: "Quartzito Taj Mahal",
     price: 1800.00,
     description: "Pedra natural com tons bege e veios delicados, conhecida pela durabilidade e sofisticação.",
-    imageUrl: "/img/last9.jpg",
+    imageUrl: "/img/tajmahal.jpeg",
   },
   {
     id: 10,
@@ -88,14 +88,14 @@ const materials: Material[] = [
     title: "Granito Azul Bahia",
     price: 3500.00,
     description: "Pedra rara com tons de azul vibrante e veios brancos e cinzas.",
-    imageUrl: "/img/last11.jpeg",
+    imageUrl: "/img/abh.jpg",
   },
   {
     id: 12,
     title: "Mármore Rosso Levanto",
     price: 1800.00,
     description: "Mármore vermelho intenso com veios brancos, ideal para decorações marcantes.",
-    imageUrl: "/img/last12.jpeg",
+    imageUrl: "/img/rosso.jpg",
   },  
 ];
 
@@ -133,9 +133,7 @@ export default function MaterialsPage() {
     return cart
       .map(
         (item) =>
-          `*${item.title}* - R$ ${item.price.toFixed(
-            2
-          )}\nDescrição: ${item.description}`
+          `*•${item.title}*`
       )
       .join("\n\n");
   };
@@ -200,10 +198,6 @@ export default function MaterialsPage() {
                   <h2 className="text-xl font-semibold text-gray-800">
                     {material.title}
                   </h2>
-                  <p className="text-gray-600 mt-2">Preço por m²:</p>
-                  <p className="text-xl font-bold text-gray-900">
-                    R$ {new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL" }).format(material.price)}
-                  </p>
                   <p className="text-gray-500 text-sm mt-2">
                     {material.description}
                   </p>
@@ -247,9 +241,6 @@ export default function MaterialsPage() {
                     <h3 className="text-lg font-semibold text-gray-800">
                       {item.title}
                     </h3>
-                    <p className="text-sm text-gray-500">
-                      R$ {new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL" }).format(item.price)}
-                    </p>
                   </div>
                   <button
                     onClick={() => removeFromCart(item.id)}

@@ -39,7 +39,7 @@ export default function Home() {
               Oferecemos uma ampla seleção de mármores e granitos nacionais e importados,
               com acabamento impecável e designs únicos.
             </p>
-            <Link href="https://maps.app.goo.gl/NPSJPNp6B877nH396">
+            <Link href="https://api.whatsapp.com/send?phone=48998143419">
               <button className="px-6 py-2 bg-gray-800 hover:bg-gray-900 rounded-full text-sm md:text-lg font-semibold transition">
                 Solicite um Orçamento
               </button>
@@ -66,7 +66,7 @@ export default function Home() {
               Realizamos serviços personalizados e de alta qualidade para transformar
               cada ambiente em uma obra de arte.
             </p>
-            <Link href="https://maps.app.goo.gl/NPSJPNp6B877nH396">
+            <Link href="/services">
               <button className="px-6 py-2 bg-gray-800 hover:bg-gray-900 rounded-full text-sm md:text-lg font-semibold transition">
                 Conheça nossos Serviços
               </button>
@@ -93,7 +93,7 @@ export default function Home() {
               Utilizamos os melhores maquinários e contamos com uma equipe altamente
               qualificada para entregar resultados excepcionais.
             </p>
-            <Link href="/enterprise">
+            <Link href="https://maps.app.goo.gl/NPSJPNp6B877nH396">
               <button className="px-6 py-2 bg-gray-800 hover:bg-gray-900 rounded-full text-sm md:text-lg font-semibold transition">
                 Conheça nossa Estrutura
               </button>
