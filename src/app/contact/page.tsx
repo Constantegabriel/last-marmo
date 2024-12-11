@@ -50,7 +50,7 @@ export default function Contato() {
               target="_blank"
             >
               <button className="flex items-center px-5 py-3 bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-500 text-white hover:brightness-90 font-bold rounded-full transition relative overflow-hidden gap-2">
-                <FaInstagram size={20} /> Siga-nos no Istagram
+                <FaInstagram size={20} /> Siga-nos no Instagram
               </button>
             </Link>
             <Link
