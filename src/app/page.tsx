@@ -108,7 +108,7 @@ export default function Home() {
           Serviços de Qualidade para Cada Projeto
         </h2>
         <div className="flex text-gray-700 flex-wrap justify-center gap-6">
-          <div className="text-center bg-gray-200 p-8 rounded-lg hover:shadow-lg transition w-full sm:w-[400px]">
+          <div className="text-center bg-gray-200 p-8 rounded-lg hover:shadow-lg transition w-full sm:w-[350px]">
             <p className="text-center flex justify-center text-[35px] mb-[10px]"><GiBriefcase /></p>
             <h1 className="text-lg font-bold">PORTFÓLIO</h1>
             <p className="text-gray-600 text-sm mt-2">
@@ -117,7 +117,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="text-center bg-gray-200 p-8 rounded-lg hover:shadow-lg transition w-full sm:w-[400px]">
+          <div className="text-center bg-gray-200 p-8 rounded-lg hover:shadow-lg transition w-full sm:w-[350px]">
             <p className="text-center flex justify-center text-[35px] mb-[10px]"><GiStoneBlock /></p>
             <h1 className="text-lg font-bold">PRODUTOS</h1>
             <p className="text-gray-600 text-sm mt-2">
@@ -126,7 +126,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="text-center bg-gray-200 p-8 rounded-lg hover:shadow-lg transition w-full sm:w-[400px]">
+          <div className="text-center bg-gray-200 p-8 rounded-lg hover:shadow-lg transition w-full sm:w-[350px]">
             <p className="text-center flex justify-center text-[35px] mb-[10px]"><PiGearDuotone /></p>
             <h1 className="text-lg font-bold">MAQUINÁRIO</h1>
             <p className="text-gray-600 text-sm mt-2">
