@@ -1,7 +1,12 @@
 "use client"; // Adicione esta linha no topo do seu arquivo
 
-import { useState } from "react";
-import Image from "next/image";
+import { useState } from "react"; 
+import Image from "next/image"; 
+import { Swiper, SwiperSlide } 
+from 'swiper/react'; 
+import 'swiper/css'; import 'swiper/css/navigation'; 
+import 'swiper/css/pagination'; 
+import 'swiper/css/scrollbar'
 
 export default function Services() {
   const services = [
@@ -106,7 +111,7 @@ export default function Services() {
             key={index}
             className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transform hover:-translate-y-2 transition duration-300 flex flex-col"
           >
-            {/* Imagem */}
+            {/* Imagem Principal */}
             <div className="relative h-64 w-full">
               <Image
                 src={service.image}
@@ -127,7 +132,7 @@ export default function Services() {
                 {service.description}
               </p>
 
-              {/* Botão abaixo da descrição, mas acima do rolo de imagens */}
+              {/* Botão abaixo da descrição, mas acima do Swiper */}
               <button
                 onClick={() => toggleImageRoll(index)}
                 className="w-full py-3 bg-gradient-to-r from-blue-500 to-blue-700 text-white text-lg font-medium rounded-lg hover:opacity-90 transition mb-4"
@@ -135,20 +140,22 @@ export default function Services() {
                 Saiba Mais
               </button>
 
-              {/* Rolagem das imagens */}
+              {/* Swiper das imagens */}
               {openedService === index && (
-                <div className="mt-6 grid grid-cols-3 gap-4">
-                  {service.images.slice(0, 9).map((image, i) => (
-                    <div key={i} className="relative h-40 w-full">
-                      <Image
-                        src={image}
-                        alt={`Imagem ${i + 1}`}
-                        fill
-                        className="object-cover rounded-md"
-                      />
-                    </div>
+                <Swiper spaceBetween={10} slidesPerView={1} loop={true}>
+                  {service.images.map((image, i) => (
+                    <SwiperSlide key={i}>
+                      <div className="relative h-64 w-full">
+                        <Image
+                          src={image}
+                          alt={`Imagem ${i + 1}`}
+                          fill
+                          className="object-cover rounded-md"
+                        />
+                      </div>
+                    </SwiperSlide>
                   ))}
-                </div>
+                </Swiper>
               )}
             </div>
           </div>

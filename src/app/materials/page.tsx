@@ -9,6 +9,7 @@ interface Material {
   title: string;
   description: string;
   imageUrl: string;
+  category: string;
 }
 
 const materials: Material[] = [
@@ -17,116 +18,136 @@ const materials: Material[] = [
     title: "Granito Preto Absoluto",
     description: "Granito preto uniforme, conhecido pela resistência e beleza discreta.",
     imageUrl: "/img/pretoabs.jpg",
+    category: "Granito",
   },
   {
     id: 2,
     title: "Quartzo Wakanda",
     description: "Quartzo de tonalidade preta com veios prateados, ideal para ambientes modernos e sofisticados.",
     imageUrl: "/img/waka.jpg",
+    category: "Quartzo",
   },
   {
     id: 3,
     title: "Quartzito Taj Mahal",
     description: "Pedra natural com tons bege e veios delicados, conhecida pela durabilidade e sofisticação.",
     imageUrl: "/img/tajmahal.jpeg",
+    category: "Quartzito",
   },
   {
     id: 4,
     title: "Mármore Branco Paraná",
     description: "Mármore raro com fundo branco puro e veios grossos dourados ou cinzas.",
     imageUrl: "/img/brancopr.jpg",
+    category: "Mármore",
   },
   {
     id: 5,
     title: "Mármore Travertino",
     description: "Mármore raro com fundo branco puro e veios grossos dourados ou cinzas.",
     imageUrl: "/img/travertino.jpg",
+    category: "Mármore",
   },  
   {
     id: 6,
     title: "Granito itaunas",
     description: "Granito preto uniforme, conhecido pela resistência e beleza discreta.",
     imageUrl: "/img/itaunas.jpg",
+    category: "Granito",
   },
   {
     id: 7,
     title: "Granito Branco Dallas",
     description: "Granito preto uniforme, conhecido pela resistência e beleza discreta.",
     imageUrl: "/img/branco-dallas.jpg",
+    category: "Granito",
   },
   {
     id: 8,
     title: "Granito Via Lactea",
     description: "Granito preto uniforme, conhecido pela resistência e beleza discreta.",
     imageUrl: "/img/via-lactea.jpg",
+    category: "Granito",
   },    
   {
     id: 9,
     title: "Quartzo Calacatta",
     description: "Quartzo de tonalidade preta com veios prateados, ideal para ambientes modernos e sofisticados.",
     imageUrl: "/img/calactt.jpg",
+    category: "Quartzo",
   },
   {
     id: 10,
     title: "Quartzo Calacatta Gold",
     description: "Quartzo de tonalidade preta com veios prateados, ideal para ambientes modernos e sofisticados.",
     imageUrl: "/img/gold.jpg",
+    category: "Quartzo",
   },
   {
     id: 11,
     title: "Quartzo Kensho",
     description: "Quartzo de tonalidade preta com veios prateados, ideal para ambientes modernos e sofisticados.",
     imageUrl: "/img/kensho.webp",
+    category: "Quartzo",
   },    
   {
     id: 12,
     title: "Quartzito San Rafaello",
     description: "Pedra natural com tons bege e veios delicados, conhecida pela durabilidade e sofisticação.",
     imageUrl: "/img/rafaello.jpeg",
+    category: "Quartzito",
   },
   {
     id: 13,
     title: "Quartzito Arabescasatto",
     description: "Pedra natural com tons bege e veios delicados, conhecida pela durabilidade e sofisticação.",
     imageUrl: "/img/arabes.jpg",
+    category: "Quartzito",
   },
   {
     id: 14,
     title: "Quartzito Mont Blanc",
     description: "Pedra natural com tons bege e veios delicados, conhecida pela durabilidade e sofisticação.",
     imageUrl: "/img/mont.jpeg",
+    category: "Quartzito",
   },   
   {
     id: 15,
     title: "Granito São Gabriel",
     description: "Granito preto uniforme, conhecido pela resistência e beleza discreta.",
     imageUrl: "/img/sao-gabriel.webp",
+    category: "Granito",
   },       
   {
     id: 16,
     title: "Quartzo Arene",
     description: "Quartzo de tonalidade preta com veios prateados, ideal para ambientes modernos e sofisticados.",
     imageUrl: "/img/arene.jpg",
+    category: "Quartzo",
   },   
   {
     id: 17,
     title: "Quartzo White Led",
     description: "Quartzo de tonalidade preta com veios prateados, ideal para ambientes modernos e sofisticados.",
     imageUrl: "/img/white led.jpg",
+    category: "Quartzo",
   },    
   {
     id: 18,
     title: "Quartzo Branco Stellar",
     description: "Quartzo de tonalidade preta com veios prateados, ideal para ambientes modernos e sofisticados.",
     imageUrl: "/img/stellar.jpg",
+    category: "Quartzo",
   },     
   {
     id: 19,
     title: "Quartzo White Led",
     description: "Quartzo de tonalidade preta com veios prateados, ideal para ambientes modernos e sofisticados.",
     imageUrl: "/img/white.jpeg",
-  },              
+    category: "Quartzo",
+  },
 ];
+
 
 export default function MaterialsPage() {
   const [cart, setCart] = useState<Material[]>([]);
@@ -141,14 +162,15 @@ export default function MaterialsPage() {
         setIsExiting(true);
         setTimeout(() => {
         setShowAlert(false);
-        }, 500);
-    }, 2000);
+        }, 500); // Tempo igual à duração da animação de saída
+    }, 2000); // Alerta visível por 2 segundos
   };
 
+  
   const addToCart = (material: Material) => {
     if (!cart.find((item) => item.id === material.id)) {
       setCart([...cart, material]);
-      showTemporaryAlert();
+      showTemporaryAlert(); // Mostra o alerta
     }
   };
 
@@ -160,9 +182,8 @@ export default function MaterialsPage() {
     if (cart.length === 0) return "";
     return cart
       .map(
-        (item) =>
-          `*•${item.title}*`
-      )
+        (item) => `*${item.title}*\nDescrição: ${item.description}`
+      ) 
       .join("\n\n");
   };
 
@@ -187,148 +208,58 @@ export default function MaterialsPage() {
 
   return (
     <div className="relative flex flex-col min-h-screen">
-      {showAlert && (
+        {showAlert && (
         <div
-          className={`fixed top-[140px] left-0 z-50 bg-gray-800 rounded-r shadow-lg text-white px-4 py-2 ${
-            isExiting ? "animate-slide-out" : "animate-slide-in"
-          }`}
-        >
-          Material adicionado ao carrinho!
-        </div>
-      )}
-      <div className="flex-1 md:mr-[350px] bg-gray-100 pt-[150px]">
+        className={`fixed top-[140px] left-0 z-50 bg-gray-800 rounded-r border-white border-r-[3px] border-b-[3px] shadow-lg text-white px-4 py-2 ${
+          isExiting ? "animate-slide-out" : "animate-slide-in"
+        }`}
+      >
+        Material adicionado ao carrinho!
+      </div>
+      
+        )}
+      <div className="flex-1 md:mr-[350px] bg-gray-50 pt-[150px]">
         <div className="p-6">
           <h1 className="text-3xl md:text-5xl font-extrabold text-left text-gray-800 mb-6">
             Descubra Nossos Mármores Exclusivos
           </h1>
           <p className="text-left text-gray-600 text-lg max-w-2xl mb-12">
-            Selecione as pedras que você gostou e adicione ao carrinho. Em seguida, clique em 'Enviar para WhatsApp' para que possamos consultar e preparar seu orçamento personalizado!
+            Selecione as pedras que você gostou e adicione ao carrinho. Em
+            seguida, clique em 'Enviar para WhatsApp' para que possamos consultar e preparar
+            seu orçamento personalizado!
           </p>
-          <div className="space-y-6">
-            <div className="p-6 bg-gray-50 rounded-lg">
-              <h2 className="text-3xl font-bold text-gray-800 mb-4">Granitos</h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                {materials
-                  .filter((material) => material.title.includes("Granito"))
-                  .map((material) => (
-                    <div
-                      key={material.id}
-                      className="bg-white p-4 rounded-lg shadow flex flex-col items-center justify-center text-center"
-                    >
-                      <Image
-                        src={material.imageUrl}
-                        alt={material.title}
-                        width={250}
-                        height={250}
-                        className="rounded-md mb-4"
-                      />
-                      <h3 className="text-lg font-semibold text-gray-800">
-                        {material.title}
-                      </h3>
-                      <p className="text-gray-600">{material.description}</p>
-                      <button
-                        onClick={() => addToCart(material)}
-                        className="mt-3 bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
-                      >
-                        Adicionar ao Carrinho
-                      </button>
-                    </div>
-                  ))}
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 max-w-[1152px]:grid-cols-2 gap-8">
+            {materials.map((material) => (
+              <div
+                key={material.id}
+                className="rounded-lg hover:shadow-xl transition-transform transform hover:scale-105"
+              >
+                <div className="w-full h-56 relative">
+                  <Image
+                    src={material.imageUrl}
+                    alt={material.title}
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    className="object-cover"
+                  />
+                </div>
+                <div className="p-4">
+                  <h2 className="text-xl font-semibold text-gray-800">
+                    {material.title}
+                  </h2>
+                  <p className="text-gray-500 text-sm mt-2">
+                    {material.description}
+                  </p>
+                  <button
+                    onClick={() => addToCart(material)}
+                    className="w-full bg-gray-800 hover:bg-gray-900 text-white text-lg font-medium mt-4 py-2 rounded-md flex items-center justify-center transition-colors"
+                  >
+                    <AiOutlineShoppingCart className="mr-2" /> Adicionar ao
+                    Carrinho
+                  </button>
+                </div>
               </div>
-            </div>
-            <div className="p-4 bg-gray-50 rounded-lg">
-              <h2 className="text-3xl font-bold text-gray-800 mb-4">Quartzo</h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                {materials
-                  .filter((material) => material.title.includes("Quartzo"))
-                  .map((material) => (
-                    <div
-                      key={material.id}
-                      className="bg-white p-4 rounded-lg shadow flex flex-col items-center justify-center text-center"
-                    >
-                      <Image
-                        src={material.imageUrl}
-                        alt={material.title}
-                        width={250}
-                        height={250}
-                        className="rounded-md mb-4"
-                      />
-                      <h3 className="text-lg font-semibold text-gray-800">
-                        {material.title}
-                      </h3>
-                      <p className="text-gray-600">{material.description}</p>
-                      <button
-                        onClick={() => addToCart(material)}
-                        className="mt-3 bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
-                      >
-                        Adicionar ao Carrinho
-                      </button>
-                    </div>
-                  ))}
-              </div>
-            </div>
-            <div className="p-4 bg-gray-50 rounded-lg">
-              <h2 className="text-3xl font-bold text-gray-800 mb-4">Quartzito</h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                {materials
-                  .filter((material) => material.title.includes("Quartzito"))
-                  .map((material) => (
-                    <div
-                      key={material.id}
-                      className="bg-white p-4 rounded-lg shadow flex flex-col items-center justify-center text-center"
-                    >
-                      <Image
-                        src={material.imageUrl}
-                        alt={material.title}
-                        width={250}
-                        height={250}
-                        className="rounded-md mb-4"
-                      />
-                      <h3 className="text-lg font-semibold text-gray-800">
-                        {material.title}
-                      </h3>
-                      <p className="text-gray-600">{material.description}</p>
-                      <button
-                        onClick={() => addToCart(material)}
-                        className="mt-3 bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
-                      >
-                        Adicionar ao Carrinho
-                      </button>
-                    </div>
-                  ))}
-              </div>
-            </div>
-            <div className="p-4 bg-gray-50 rounded-lg">
-              <h2 className="text-3xl font-bold text-gray-800 mb-4">Mármore</h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                {materials
-                  .filter((material) => material.title.includes("Mármore"))
-                  .map((material) => (
-                    <div
-                      key={material.id}
-                      className="bg-white p-4 rounded-lg shadow flex flex-col items-center justify-center text-center"
-                    >
-                      <Image
-                        src={material.imageUrl}
-                        alt={material.title}
-                        width={250}
-                        height={250}
-                        className="rounded-md mb-4"
-                      />
-                      <h3 className="text-lg font-semibold text-gray-800">
-                        {material.title}
-                      </h3>
-                      <p className="text-gray-600">{material.description}</p>
-                      <button
-                        onClick={() => addToCart(material)}
-                        className="mt-3 bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
-                      >
-                        Adicionar ao Carrinho
-                      </button>
-                    </div>
-                  ))}
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </div>
@@ -343,7 +274,7 @@ export default function MaterialsPage() {
 
       <div className="hidden md:flex w-[350px] bg-gray-100 border-l border-gray-300 fixed top-0 right-0 h-full shadow-lg flex-col">
         <h2 className="text-2xl flex font-bold text-gray-800 mb-4 px-4 mt-[150px]">
-          <AiOutlineShoppingCart className="mr-2 mt-[3px]" /> Carrinho de Materiais
+        <AiOutlineShoppingCart className="mr-2 mt-[3px]" /> Carrinho de Materiais
         </h2>
         <div className="flex-1 overflow-y-auto px-4">
           {cart.length === 0 ? (

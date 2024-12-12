@@ -40,7 +40,7 @@ export default function Home() {
               com acabamento impecável e designs únicos.
             </p>
             <Link href="https://api.whatsapp.com/send?phone=48998143419">
-              <button className="px-6 py-2 bg-gray-800 hover:bg-gray-900 rounded-full text-sm md:text-lg font-semibold transition">
+              <button className="px-6 py-2 bg-gray-900 hover:bg-gray-800 border-[1px] border-white rounded-full text-sm md:text-lg font-semibold transition">
                 Solicite um Orçamento
               </button>
             </Link>
@@ -50,7 +50,7 @@ export default function Home() {
         {/* Slide 2 */}
         <SwiperSlide
           className="relative flex items-end justify-start bg-cover bg-center h-screen"
-          style={{ backgroundImage: `url('/img/quarto.jpg')` }}
+          style={{ backgroundImage: `url('/img/gs1.jpg')` }}
         >
           <div
             className="absolute inset-0"
@@ -67,7 +67,7 @@ export default function Home() {
               cada ambiente em uma obra de arte.
             </p>
             <Link href="/services">
-              <button className="px-6 py-2 bg-gray-800 hover:bg-gray-900 rounded-full text-sm md:text-lg font-semibold transition">
+              <button className="px-6 py-2 bg-gray-900 hover:bg-gray-800 border-[1px] border-white rounded-full text-sm md:text-lg font-semibold transition">
                 Conheça nossos Serviços
               </button>
             </Link>
@@ -94,7 +94,7 @@ export default function Home() {
               qualificada para entregar resultados excepcionais.
             </p>
             <Link href="https://maps.app.goo.gl/NPSJPNp6B877nH396">
-              <button className="px-6 py-2 bg-gray-800 hover:bg-gray-900 rounded-full text-sm md:text-lg font-semibold transition">
+              <button className="px-6 py-2 bg-gray-900 hover:bg-gray-800 border-[1px] border-white rounded-full text-sm md:text-lg font-semibold transition">
                 Conheça nossa Estrutura
               </button>
             </Link>
@@ -103,39 +103,6 @@ export default function Home() {
       </Swiper>
 
       {/* Serviços em destaque */}
-      <div className="bg-gray-100 py-12 px-6 md:px-20">
-        <h2 className="text-center text-gray-700 text-2xl md:text-4xl font-bold mb-8">
-          Serviços de Qualidade para Cada Projeto
-        </h2>
-        <div className="flex text-gray-700 flex-wrap justify-center gap-6">
-          <div className="text-center bg-gray-200 p-8 rounded-lg hover:shadow-lg transition w-full sm:w-[350px]">
-            <p className="text-center flex justify-center text-[35px] mb-[10px]"><GiBriefcase /></p>
-            <h1 className="text-lg font-bold">PORTFÓLIO</h1>
-            <p className="text-gray-600 text-sm mt-2">
-              Inspire-se com nossos projetos realizados, criados com precisão e
-              dedicação.
-            </p>
-          </div>
-
-          <div className="text-center bg-gray-200 p-8 rounded-lg hover:shadow-lg transition w-full sm:w-[350px]">
-            <p className="text-center flex justify-center text-[35px] mb-[10px]"><GiStoneBlock /></p>
-            <h1 className="text-lg font-bold">PRODUTOS</h1>
-            <p className="text-gray-600 text-sm mt-2">
-              Trabalhamos com os melhores materiais para oferecer qualidade e
-              sofisticação.
-            </p>
-          </div>
-
-          <div className="text-center bg-gray-200 p-8 rounded-lg hover:shadow-lg transition w-full sm:w-[350px]">
-            <p className="text-center flex justify-center text-[35px] mb-[10px]"><PiGearDuotone /></p>
-            <h1 className="text-lg font-bold">MAQUINÁRIO</h1>
-            <p className="text-gray-600 text-sm mt-2">
-              Modernos equipamentos e uma equipe qualificada garantem resultados
-              superiores.
-            </p>
-          </div>
-        </div>
-      </div>
 
       {/* Sobre nós */}
       <div className="bg-white py-16 px-6 md:px-20">
@@ -148,7 +115,7 @@ export default function Home() {
             className="w-[80%] border-l-[10px] border-gray-800 shadow-lg"
           />
           <div>
-            <h2 className="text-2xl md:text-4xl text-gray-700 font-bold mb-4">
+            <h2 className="text-2xl md:text-4xl text-gray-800 font-bold mb-4">
               Sobre a <span className="text-gray-800">Marmoraria Florianópolis</span>
             </h2>
             <p className="text-gray-600 mb-4">
@@ -161,42 +128,90 @@ export default function Home() {
               estamos prontos para atender suas necessidades com materiais de
               alta qualidade e acabamentos impecáveis.
             </p>
+            <button className="bg-gray-800 mt-[30px] px-8 py-[7px] hover:bg-gray-700 rounded-full font-semibold">
+              Sobre a empresa
+            </button>
           </div>
         </div>
       </div>
+        <div className="bg-gray-800 py-[80px] rounded- px-6 md:px-20">
+          <h2 className="text-center text-gray-100 text-2xl md:text-4xl font-bold mb-12">
+            Descubra por que somos a empresa certa para você
+          </h2>
+          <div className="flex text-gray-800 flex-wrap justify-center gap-6">
+            <div className="text-center bg-white p-8 border-2 border-gray-800 pt-12 pb-6 rounded-lg hover:shadow-lg transition w-full sm:w-[350px]">
+              <p className="text-center flex justify-center text-[35px] mb-[10px]"><GiBriefcase /></p>
+              <h1 className="text-lg font-bold">PORTFÓLIO</h1>
+              <p className="text-gray-800 text-md mt-4">
+                Inspire-se com nossos projetos realizados, criados com precisão e
+                dedicação.
+              </p>
+              <p className="font-semibold text-gray-600 text-right text-[15px] underline mt-[19px]">
+                Saiba mais
+              </p>
+            </div>
+
+            <div className="text-center bg-white p-8 pt-12 border-2 border-gray-800 pb-6 rounded-lg hover:shadow-lg transition w-full sm:w-[350px]">
+              <p className="text-center flex justify-center text-[35px] mb-[10px]"><GiStoneBlock /></p>
+              <h1 className="text-lg font-bold">PRODUTOS</h1>
+              <p className="text-gray-800 text-md mt-4">
+                Trabalhamos com os melhores materiais para oferecer qualidade e
+                sofisticação.
+              </p>
+              <p className="font-semibold text-gray-600 text-right text-[15px] underline mt-[19px]">
+                Saiba mais
+              </p>
+            </div>
+
+            <div className="text-center bg-white p-8 pt-12 border-2 border-gray-800 pb-6 rounded-lg hover:shadow-lg transition w-full sm:w-[350px]">
+              <p className="text-center flex justify-center text-[35px] mb-[10px]"><PiGearDuotone /></p>
+              <h1 className="text-lg font-bold">MAQUINÁRIO</h1>
+              <p className="text-gray-800 text-md mt-4">
+                Modernos equipamentos e uma equipe qualificada garantem resultados
+                superiores.
+              </p>
+              <p className="font-semibold text-gray-600 text-right text-[15px] underline mt-[19px]">
+                Saiba mais
+              </p>
+            </div>
+          </div>
+        </div>
 
       {/* Galeria */}
-      <div className="bg-gray-100 py-12 px-6 md:px-20">
+      <div className="bg-gray-200 py-12 px-6 md:px-20">
         <h2 className="text-center text-gray-800 text-2xl md:text-4xl font-bold mb-8">
           Galeria de Serviços
         </h2>
-        <div className="grid grid-cols-1 mt-[20px] sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <h2 className="text-gray-700 mb-12 text-lg text-center w-[90%] md:w-[70%] mx-auto">
+          Confira nossa seleção de serviços personalizados de mármore, especialmente projetados para transformar seus ambientes em espaços sofisticados e únicos.
+        </h2>
+        <div className="grid grid-cols-1 mt-[20px] lg:grid-cols-3 gap-6">
           <Image
             src="/img/gs1.jpg"
             alt="Projeto 1"
             width={400}
             height={300}
-            className="w-full h-60 object-cover rounded-lg shadow-lg"
+            className="w-[80%] lg:w-full lg:m-0 lg:mt-10 mr-[10%] h-60 object-cover rounded-lg shadow-2xl"
           />
           <Image
             src="/img/gs2.jpg"
             alt="Projeto 2"
             width={400}
             height={300}
-            className="w-full h-60 object-cover rounded-lg shadow-lg"
+            className="w-[80%] lg:w-full lg:m-0 h-60 ml-[20%] object-cover rounded-lg shadow-2xl"
           />
           <Image
             src="/img/quarto.jpg"
             alt="Projeto 3"
             width={400}
             height={300}
-            className="w-full h-60 object-cover rounded-lg shadow-lg"
+            className="w-[80%] lg:w-full mx-auto lg:mt-20 h-60 object-cover rounded-lg shadow-2xl"
           />
         </div>
         <div className="flex mt-[25px] lg:mt-[15px] justify-center">
           <Link href="/services">
-            <button className="px-7 py-2 rounded-md text-white font-medium bg-gray-800">
-              Nossos Serviços
+            <button className="px-10 py-[10px] rounded-full text-white font-medium bg-gray-800">
+              Veja Nossas Soluções
             </button>
           </Link>
         </div>
