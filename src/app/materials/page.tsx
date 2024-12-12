@@ -208,62 +208,75 @@ export default function MaterialsPage() {
 
   return (
     <div className="relative flex flex-col min-h-screen">
-        {showAlert && (
+      {showAlert && (
         <div
-        className={`fixed top-[140px] left-0 z-50 bg-gray-800 rounded-r border-white border-r-[3px] border-b-[3px] shadow-lg text-white px-4 py-2 ${
-          isExiting ? "animate-slide-out" : "animate-slide-in"
-        }`}
-      >
-        Material adicionado ao carrinho!
-      </div>
-      
-        )}
-      <div className="flex-1 md:mr-[350px] bg-gray-50 pt-[150px]">
+          className={`fixed top-[140px] left-0 z-50 bg-gray-800 rounded-r border-white border-r-[3px] border-b-[3px] shadow-lg text-white px-4 py-2 ${
+            isExiting ? "animate-slide-out" : "animate-slide-in"
+          }`}
+        >
+          Material adicionado ao carrinho!
+        </div>
+      )}
+  
+      {/* Subnavbar */}
+      <nav className="hidden lg:grid w-full pt-[160px] bg-gray-100 shadow-md py-4">
+        <ul className="flex justify-around px-[10px] xl:px-[10%] mr-[350px] space-x-6">
+          {["Granito", "Quartzo", "Quartzito", "Mármore"].map((category) => (
+            <li key={category}>
+              <a
+                href={`#${category}`}
+                className="text-white bg-gray-800 px-10 py-2 rounded-full font-medium hover:text-gray-300 transition-colors"
+              >
+                {category}s
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+  
+      <div className="flex-1 pt-[160px] lg:pt-[20px] md:mr-[350px] bg-gray-50">
         <div className="p-6">
-          <h1 className="text-3xl md:text-5xl font-extrabold text-left text-gray-800 mb-6">
-            Descubra Nossos Mármores Exclusivos
+          <h1 className="text-3xl md:text-4xl font-extrabold text-left text-gray-800 mb-6">
+            Descubra Alguns dos nossos Materiais Exclusivos
           </h1>
-          <p className="text-left text-gray-600 text-lg max-w-2xl mb-12">
+          <p className="text-left text-gray-600 text-lg max-w-3xl mb-12">
             Selecione as pedras que você gostou e adicione ao carrinho. Em
-            seguida, clique em 'Enviar para WhatsApp' para que possamos consultar e preparar
+            seguida, vá até seu carrinho e clique em <b>'Enviar para WhatsApp'</b> para que possamos consultar e preparar
             seu orçamento personalizado!
           </p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 max-w-[1152px]:grid-cols-2 gap-8">
-            {materials.map((material) => (
-              <div
-                key={material.id}
-                className="rounded-lg hover:shadow-xl transition-transform transform hover:scale-105"
-              >
-                <div className="w-full h-56 relative">
-                  <Image
-                    src={material.imageUrl}
-                    alt={material.title}
-                    fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    className="object-cover"
-                  />
-                </div>
-                <div className="p-4">
-                  <h2 className="text-xl font-semibold text-gray-800">
-                    {material.title}
-                  </h2>
-                  <p className="text-gray-500 text-sm mt-2">
-                    {material.description}
-                  </p>
-                  <button
-                    onClick={() => addToCart(material)}
-                    className="w-full bg-gray-800 hover:bg-gray-900 text-white text-lg font-medium mt-4 py-2 rounded-md flex items-center justify-center transition-colors"
-                  >
-                    <AiOutlineShoppingCart className="mr-2" /> Adicionar ao
-                    Carrinho
-                  </button>
-                </div>
+  
+          {/* Renderização por categorias */}
+          {["Granito", "Quartzo", "Quartzito", "Mármore"].map((category) => (
+            <section key={category} id={category} className="mb-12">
+              <h2 className="text-3xl font-bold text-center border-b-[4px] w-[50%] lg:w-[30%] pb-4 border-gray-800 mx-auto text-gray-800 mt-20 mb-20">
+                {category}s
+              </h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8">
+                {materials
+                  .filter((material) => material.category === category)
+                  .map((material) => (
+                    <div key={material.id} className="rounded-lg hover:shadow-xl transition-transform transform hover:scale-105">
+                      <div className="w-full h-56 relative">
+                        <Image src={material.imageUrl} alt={material.title} fill className="object-cover" />
+                      </div>
+                      <div className="p-4">
+                        <h3 className="text-xl font-semibold text-gray-800">{material.title}</h3>
+                        <p className="text-gray-500 text-sm mt-2">{material.description}</p>
+                        <button
+                          onClick={() => addToCart(material)}
+                          className="w-full bg-gray-800 hover:bg-gray-900 text-white text-lg font-medium mt-4 py-2 rounded-md flex items-center justify-center transition-colors"
+                        >
+                          <AiOutlineShoppingCart className="mr-2" /> Adicionar ao Carrinho
+                        </button>
+                      </div>
+                    </div>
+                  ))}
               </div>
-            ))}
-          </div>
+            </section>
+          ))}
         </div>
-      </div>
-
+      </div>  
+  
       <button
         className="md:hidden fixed bottom-4 right-4 bg-gray-800 text-white px-6 py-3 rounded-full shadow-lg flex items-center gap-2"
         onClick={() => setIsModalOpen(true)}
@@ -271,10 +284,10 @@ export default function MaterialsPage() {
         <AiOutlineShoppingCart className="text-2xl mt-[-2px]" />
         Meu Carrinho
       </button>
-
+  
       <div className="hidden md:flex w-[350px] bg-gray-100 border-l border-gray-300 fixed top-0 right-0 h-full shadow-lg flex-col">
         <h2 className="text-2xl flex font-bold text-gray-800 mb-4 px-4 mt-[150px]">
-        <AiOutlineShoppingCart className="mr-2 mt-[3px]" /> Carrinho de Materiais
+          <AiOutlineShoppingCart className="mr-2 mt-[3px]" /> Carrinho de Materiais
         </h2>
         <div className="flex-1 overflow-y-auto px-4">
           {cart.length === 0 ? (
@@ -282,19 +295,11 @@ export default function MaterialsPage() {
           ) : (
             <ul className="space-y-4">
               {cart.map((item) => (
-                <li
-                  key={item.id}
-                  className="bg-white p-3 rounded shadow flex justify-between items-center"
-                >
+                <li key={item.id} className="bg-white p-3 rounded shadow flex justify-between items-center">
                   <div>
-                    <h3 className="text-lg font-semibold text-gray-800">
-                      {item.title}
-                    </h3>
+                    <h3 className="text-lg font-semibold text-gray-800">{item.title}</h3>
                   </div>
-                  <button
-                    onClick={() => removeFromCart(item.id)}
-                    className="text-red-600 hover:text-red-800"
-                  >
+                  <button onClick={() => removeFromCart(item.id)} className="text-red-600 hover:text-red-800">
                     <AiOutlineDelete className="text-2xl" />
                   </button>
                 </li>
@@ -311,18 +316,15 @@ export default function MaterialsPage() {
           </button>
         )}
       </div>
-
+  
       {isModalOpen && (
         <div className="fixed pt-[145px] inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
           <div className="bg-white w-full h-full p-6 relative overflow-y-auto">
-            <button
-              onClick={() => setIsModalOpen(false)}
-              className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 text-4xl"
-            >
+            <button onClick={() => setIsModalOpen(false)} className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 text-4xl">
               &times;
             </button>
             <h2 className="text-2xl flex font-bold text-gray-800 mb-4">
-                <AiOutlineShoppingCart className="mr-2 mt-[3px]" /> Carrinho de Materiais
+              <AiOutlineShoppingCart className="mr-2 mt-[3px]" /> Carrinho de Materiais
             </h2>
             <div className="flex-1 overflow-y-auto">
               {cart.length === 0 ? (
@@ -330,19 +332,11 @@ export default function MaterialsPage() {
               ) : (
                 <ul className="space-y-4">
                   {cart.map((item) => (
-                    <li
-                      key={item.id}
-                      className="bg-white p-3 rounded shadow flex justify-between items-center"
-                    >
+                    <li key={item.id} className="bg-white p-3 rounded shadow flex justify-between items-center">
                       <div>
-                        <h3 className="text-lg font-semibold text-gray-800">
-                          {item.title}
-                        </h3>
+                        <h3 className="text-lg font-semibold text-gray-800">{item.title}</h3>
                       </div>
-                      <button
-                        onClick={() => removeFromCart(item.id)}
-                        className="text-red-600 hover:text-red-800"
-                      >
+                      <button onClick={() => removeFromCart(item.id)} className="text-red-600 hover:text-red-800">
                         <AiOutlineDelete className="text-2xl" />
                       </button>
                     </li>

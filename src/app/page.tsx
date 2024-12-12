@@ -31,7 +31,7 @@ export default function Home() {
               background: "linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0))",
             }}
           ></div>
-          <div className="absolute bottom-12 left-[5%] lg:left-10 text-left px-4 md:px-10 pb-10 max-w-lg">
+          <div className="absolute bottom-16 left-[5%] lg:left-10 text-left px-4 md:px-10 pb-10 max-w-lg">
             <h1 className="text-xl md:text-3xl lg:text-4xl font-bold mb-3 sm:mb-5 text-white">
               Sua Marmoraria em Florianópolis
             </h1>
@@ -58,7 +58,7 @@ export default function Home() {
               background: "linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0))",
             }}
           ></div>
-          <div className="absolute bottom-12 left-[5%] lg:left-10 text-left px-4 md:px-10 pb-10 max-w-lg">
+          <div className="absolute bottom-16 left-[5%] lg:left-10 text-left px-4 md:px-10 pb-10 max-w-lg">
             <h1 className="text-xl md:text-3xl lg:text-4xl font-bold mb-3 sm:mb-5 text-white">
               Excelência em Serviços de Marmoraria
             </h1>
@@ -85,7 +85,7 @@ export default function Home() {
               background: "linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0))",
             }}
           ></div>
-          <div className="absolute bottom-12 left-[5%] lg:left-10 text-left px-4 md:px-10 pb-10 max-w-lg">
+          <div className="absolute bottom-16 left-[5%] lg:left-10 text-left px-4 md:px-10 pb-10 max-w-lg">
             <h1 className="text-xl md:text-3xl lg:text-4xl font-bold mb-3 sm:mb-5 text-white">
               Tecnologia e Profissionalismo
             </h1>
@@ -134,56 +134,63 @@ export default function Home() {
           </div>
         </div>
       </div>
-        <div className="bg-gray-800 py-[80px] rounded- px-6 md:px-20">
-          <h2 className="text-center text-gray-100 text-2xl md:text-4xl font-bold mb-12">
-            Descubra por que somos a empresa certa para você
-          </h2>
-          <div className="flex text-gray-800 flex-wrap justify-center gap-6">
-            <div className="text-center bg-white p-8 border-2 border-gray-800 pt-12 pb-6 rounded-lg hover:shadow-lg transition w-full sm:w-[350px]">
-              <p className="text-center flex justify-center text-[35px] mb-[10px]"><GiBriefcase /></p>
-              <h1 className="text-lg font-bold">PORTFÓLIO</h1>
-              <p className="text-gray-800 text-md mt-4">
-                Inspire-se com nossos projetos realizados, criados com precisão e
-                dedicação.
-              </p>
-              <p className="font-semibold text-gray-600 text-right text-[15px] underline mt-[19px]">
-                Saiba mais
-              </p>
-            </div>
-
-            <div className="text-center bg-white p-8 pt-12 border-2 border-gray-800 pb-6 rounded-lg hover:shadow-lg transition w-full sm:w-[350px]">
-              <p className="text-center flex justify-center text-[35px] mb-[10px]"><GiStoneBlock /></p>
-              <h1 className="text-lg font-bold">PRODUTOS</h1>
-              <p className="text-gray-800 text-md mt-4">
-                Trabalhamos com os melhores materiais para oferecer qualidade e
-                sofisticação.
-              </p>
-              <p className="font-semibold text-gray-600 text-right text-[15px] underline mt-[19px]">
-                Saiba mais
-              </p>
-            </div>
-
-            <div className="text-center bg-white p-8 pt-12 border-2 border-gray-800 pb-6 rounded-lg hover:shadow-lg transition w-full sm:w-[350px]">
-              <p className="text-center flex justify-center text-[35px] mb-[10px]"><PiGearDuotone /></p>
-              <h1 className="text-lg font-bold">MAQUINÁRIO</h1>
-              <p className="text-gray-800 text-md mt-4">
-                Modernos equipamentos e uma equipe qualificada garantem resultados
-                superiores.
-              </p>
-              <p className="font-semibold text-gray-600 text-right text-[15px] underline mt-[19px]">
-                Saiba mais
-              </p>
-            </div>
+      <div className="bg-gray-800 py-[80px] rounded-lg px-6 md:px-20">
+        <h2 className="text-center text-gray-100 text-2xl md:text-4xl font-bold mb-12">
+          Descubra por que somos a marmoraria certa para você
+        </h2>
+        <div className="flex text-gray-800 flex-wrap justify-center gap-6">
+          
+          {/* Bloco 1: Portfólio */}
+          <div className="text-center bg-white p-8 border-2 border-gray-800 pt-12 pb-6 rounded-lg hover:shadow-lg transition w-full md:w-[350px]">
+            <p className="text-center flex justify-center text-[35px] mb-[10px]">
+              <GiBriefcase />
+            </p>
+            <h1 className="text-lg font-bold">PORTFÓLIO</h1>
+            <p className="text-gray-800 text-md mt-4">
+              Inspire-se com nossos projetos realizados, criados com precisão e dedicação.
+            </p>
+            <a href="./services" className="font-semibold text-gray-600 text-right text-[15px] underline mt-[19px] block">
+              Saiba mais
+            </a>
           </div>
-        </div>
 
+          {/* Bloco 2: Produtos */}
+          <div className="text-center bg-white p-8 pt-12 border-2 border-gray-800 pb-6 rounded-lg hover:shadow-lg transition w-full md:w-[350px]">
+            <p className="text-center flex justify-center text-[35px] mb-[10px]">
+              <GiStoneBlock />
+            </p>
+            <h1 className="text-lg font-bold">PRODUTOS</h1>
+            <p className="text-gray-800 text-md mt-4">
+              Trabalhamos com os melhores materiais para oferecer qualidade e sofisticação.
+            </p>
+            <a href="./materials" className="font-semibold text-gray-600 text-right text-[15px] underline mt-[19px] block">
+              Saiba mais
+            </a>
+          </div>
+
+          {/* Bloco 3: Maquinário */}
+          <div className="text-center bg-white p-8 pt-12 border-2 border-gray-800 pb-6 rounded-lg hover:shadow-lg transition w-full md:w-[350px]">
+            <p className="text-center flex justify-center text-[35px] mb-[10px]">
+              <PiGearDuotone />
+            </p>
+            <h1 className="text-lg font-bold">MAQUINÁRIO</h1>
+            <p className="text-gray-800 text-md mt-4">
+              Modernos equipamentos e uma equipe qualificada garantem resultados superiores.
+            </p>
+            <a href="./enterprise" className="font-semibold text-gray-600 text-right text-[15px] underline mt-[19px] block">
+              Saiba mais
+            </a>
+          </div>
+
+        </div>
+      </div>
       {/* Galeria */}
       <div className="bg-gray-200 py-12 px-6 md:px-20">
         <h2 className="text-center text-gray-800 text-2xl md:text-4xl font-bold mb-8">
           Galeria de Serviços
         </h2>
         <h2 className="text-gray-700 mb-12 text-lg text-center w-[90%] md:w-[70%] mx-auto">
-          Confira nossa seleção de serviços personalizados de mármore, especialmente projetados para transformar seus ambientes em espaços sofisticados e únicos.
+          Confira nossa seleção de serviços personalizados sob medida, especialmente projetados para transformar seus ambientes em espaços sofisticados e únicos.
         </h2>
         <div className="grid grid-cols-1 mt-[20px] lg:grid-cols-3 gap-6">
           <Image
