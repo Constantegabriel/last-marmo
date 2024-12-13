@@ -1,165 +1,234 @@
-"use client"; // Adicione esta linha no topo do seu arquivo
+"use client";
 
-import { useState } from "react"; 
-import Image from "next/image"; 
-import { Swiper, SwiperSlide } 
-from 'swiper/react'; 
-import 'swiper/css'; import 'swiper/css/navigation'; 
-import 'swiper/css/pagination'; 
-import 'swiper/css/scrollbar'
+import Image from "next/image";
+import Link from "next/link";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+import '../globals.css'
+
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination, Navigation, Autoplay } from "swiper/modules";
 
 export default function Services() {
-  const services = [
-    {
-      title: "Cozinhas Planejadas",
-      description:
-        "Soluções personalizadas em mármores e granitos para bancadas e ilhas de cozinha, combinando funcionalidade e design.",
-      image: "/img/cozinha.jpg",
-      images: [
-        "/img/coz1.jpg",
-        "/img/coz2.jpg",
-        "/img/coz3.jpg",
-        "/img/coz4.jpg",
-        "/img/coz5.jpg",
-        "/img/coz6.jpg",
-      ],
-    },
-    {
-      title: "Banheiros de Luxo",
-      description:
-        "Crie ambientes relaxantes com bancadas, lavatórios e revestimentos elegantes para banheiros sofisticados.",
-      image: "/img/banheiro.jpg",
-      images: [
-        "/img/ban1.jpg",
-        "/img/ban2.jpg",
-        "/img/ban3.jpg",
-        "/img/ban4.jpg",
-        "/img/ban5.jpg",
-        "/img/ban6.jpg",
-      ],
-    },
-    {
-      title: "Salas de Estar",
-      description:
-        "Mesas de centro, lareiras e detalhes em mármore para dar um toque de exclusividade à sua sala.",
-      image: "/img/salas.jpg",
-      images: [
-        "/img/sala1.jpg",
-        "/img/sala2.jpg",
-        "/img/sala3.jpg",
-        "/img/sala4.jpg",
-        "/img/sala5.jpg",
-        "/img/sala6.jpg",
-      ],
-    },
-    {
-      title: "Espaços Comerciais",
-      description:
-        "Mármores e granitos de alto padrão para recepções, escritórios e ambientes corporativos que impressionam.",
-      image: "/img/espacos-com.jpg",
-      images: [
-        "/img/esp1.jpg",
-        "/img/esp2.jpg",
-        "/img/ar3.jpg",
-      ],
-    },
-    {
-      title: "Escadas e Corrimãos",
-      description:
-        "Proporcione sofisticação e durabilidade com escadas revestidas em mármore ou granito.",
-      image: "/img/escadas.jpg",
-      images: [
-        "/img/esc1.jpg",
-        "/img/esc2.jpg",
-        "/img/esc3.jpg",
-      ],
-    },
-    {
-      title: "Áreas Externas",
-      description:
-        "Materiais resistentes e elegantes para áreas gourmet, piscinas e varandas.",
-      image: "/img/externas.jpg",
-      images: [
-        "/img/ar3.jpg",
-        "/img/ar2.jpg",
-        "/img/ar1.jpg",
-      ],
-    },
-  ];
-
-  // Estado para controle da exibição do rolo de imagens
-  const [openedService, setOpenedService] = useState<number | null>(null);
-
-  const toggleImageRoll = (index: number) => {
-    setOpenedService(openedService === index ? null : index); // Abre ou fecha o rolo de imagens
-  };
-
   return (
-    <section className="bg-gray-50 mt-[130px] min-h-screen py-16 px-8 md:px-20">
-      {/* Título da página */}
-      <div className="text-center mb-16">
-        <h1 className="text-5xl font-extrabold text-gray-800">Nossos Serviços</h1>
-        <p className="text-gray-600 mt-4 text-lg max-w-2xl mx-auto">
-          Explore nossos serviços e veja como transformamos ambientes com materiais de alta qualidade e design sofisticado.
-        </p>
+    <section className="bg-gray-50">
+
+      {/* Seção de Destaque (Entrada) */}
+      <div className="relative flex flex-col lg:px-[10%] justify-center mt-[145px] bg-white py-[100px] h-[600px] px-8 md:px-20">
+        
+        {/* Background Menor com Texto à Esquerda */}
+        <div className="absolute top-[50%] lg:mx-[5%] bg-opacity-95 left-4 transform -translate-y-1/2 w-[90%] md:w-[60%] lg:w-[40%] bg-gray-800 text-white p-6 md:p-8 rounded-lg shadow-2xl z-10">
+          <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold mb-6">
+            Explore Aqui Nossas Incríveis Obras
+          </h2>
+          <p className="text-lg mb-6">
+            Descubra projetos únicos e inspiradores que transformaram ambientes com elegância e qualidade incomparáveis.
+          </p>
+        </div>
+
+        {/* Imagem Grande da Área Principal à Direita */}
+        <div className="absolute top-0 lg:mx-[5%] md:top-10 right-0 w-full h-[500px] md:w-[80%] lg:w-[60%] shadow-lg md:rounded-lg overflow-hidden">
+          <Image
+            src="/img/quarto.jpg"
+            alt="Espaço com Mármores e Granitos"
+            layout="fill"
+            className="object-cover"
+          />
+        </div>
       </div>
 
-      {/* Serviços */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
-        {services.map((service, index) => (
-          <div
-            key={index}
-            className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transform hover:-translate-y-2 transition duration-300 flex flex-col"
-          >
-            {/* Imagem Principal */}
-            <div className="relative h-64 w-full">
-              <Image
-                src={service.image}
-                alt={service.title}
-                fill
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                className="object-cover"
-                priority={index === 0} // Prioriza o carregamento da primeira imagem
-              />
-            </div>
-
-            {/* Detalhes */}
-            <div className="p-6 flex flex-col">
-              <h2 className="text-2xl font-semibold text-gray-800 mb-2">
-                {service.title}
-              </h2>
-              <p className="text-gray-600 text-base leading-relaxed mb-4">
-                {service.description}
-              </p>
-
-              {/* Botão abaixo da descrição, mas acima do Swiper */}
-              <button
-                onClick={() => toggleImageRoll(index)}
-                className="w-full py-3 bg-gradient-to-r from-blue-500 to-blue-700 text-white text-lg font-medium rounded-lg hover:opacity-90 transition mb-4"
-              >
-                Saiba Mais
+      {/* Seção 1: Cozinhas Planejadas */}
+      <div className="py-24 mt-[-90px] md:mt-[-70px] bg-white">
+        <div className="container mx-auto flex flex-col items-center gap-8 px-[2%] md:px-[10%] relative">
+          
+          {/* Texto acima do Swiper */}
+          <div className="text-center md:text-left w-full md:w-3/3 mb-6">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-800">Cozinhas Planejadas</h2>
+            <p className="text-gray-600 mb-6 leading-relaxed">
+              Bancadas e ilhas de cozinha feitas sob medida, combinando funcionalidade e design sofisticado. Transforme sua cozinha em um ambiente de beleza e praticidade.
+            </p>
+            <Link href="/materials">
+              <button className="bg-gray-800 hover:bg-gray-700 text-white py-3 px-6 rounded-full font-semibold transition">
+                Escolha o Mármore Ideal
               </button>
-
-              {/* Swiper das imagens */}
-              {openedService === index && (
-                <Swiper spaceBetween={10} slidesPerView={1} loop={true}>
-                  {service.images.map((image, i) => (
-                    <SwiperSlide key={i}>
-                      <div className="relative h-64 w-full">
-                        <Image
-                          src={image}
-                          alt={`Imagem ${i + 1}`}
-                          fill
-                          className="object-cover rounded-md"
-                        />
-                      </div>
-                    </SwiperSlide>
-                  ))}
-                </Swiper>
-              )}
-            </div>
+            </Link>
           </div>
-        ))}
+
+          {/* Swiper com Imagens de Cozinhas */}
+          <div className="w-full md:w-3/3 h-[400px] md:h-[600px] relative">
+            <Swiper
+              modules={[Pagination, Navigation, Autoplay]}
+              spaceBetween={10}
+              slidesPerView={1}
+              loop={true}
+              autoplay={{ delay: 3000 }}
+              pagination={{ clickable: true, bulletClass: "swiper-pagination-bullet custom-bullet" }}
+              navigation={{ nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" }}
+              className="rounded-lg shadow-lg"
+            >
+              <SwiperSlide>
+                <div className="relative w-full h-[400px] md:h-[600px]">
+                  <Image
+                    src="/img/coz1.jpg"
+                    alt="Cozinha Planejada 1"
+                    layout="fill"
+                    className="object-cover"
+                  />
+                </div>
+              </SwiperSlide>
+              <SwiperSlide>
+                <div className="relative w-full h-[400px] md:h-[600px]">
+                  <Image
+                    src="/img/coz2.jpg"
+                    alt="Cozinha Planejada 2"
+                    layout="fill"
+                    className="object-cover"
+                  />
+                </div>
+              </SwiperSlide>
+              <SwiperSlide>
+                <div className="relative w-full h-[400px] md:h-[600px]">
+                  <Image
+                    src="/img/coz3.jpg"
+                    alt="Cozinha Planejada 3"
+                    layout="fill"
+                    className="object-cover"
+                  />
+                </div>
+              </SwiperSlide>
+              <SwiperSlide>
+                <div className="relative w-full h-[400px] md:h-[600px]">
+                  <Image
+                    src="/img/coz4.jpg"
+                    alt="Cozinha Planejada 4"
+                    layout="fill"
+                    className="object-cover"
+                  />
+                </div>
+              </SwiperSlide>
+              <SwiperSlide>
+                <div className="relative w-full h-[400px] md:h-[600px]">
+                  <Image
+                    src="/img/coz5.jpg"
+                    alt="Cozinha Planejada 5"
+                    layout="fill"
+                    className="object-cover"
+                  />
+                </div>
+              </SwiperSlide>
+              <SwiperSlide>
+                <div className="relative w-full h-[400px] md:h-[600px]">
+                  <Image
+                    src="/img/coz6.jpg"
+                    alt="Cozinha Planejada 6"
+                    layout="fill"
+                    className="object-cover"
+                  />
+                </div>
+              </SwiperSlide>
+              <SwiperSlide>
+                <div className="relative w-full h-[400px] md:h-[600px]">
+                  <Image
+                    src="/img/coz7.jpg"
+                    alt="Cozinha Planejada 7"
+                    layout="fill"
+                    className="object-cover"
+                  />
+                </div>
+              </SwiperSlide>
+              <SwiperSlide>
+                <div className="relative w-full h-[400px] md:h-[600px]">
+                  <Image
+                    src="/img/cozinha.jpg"
+                    alt="Cozinha Planejada 8"
+                    layout="fill"
+                    className="object-cover"
+                  />
+                </div>
+              </SwiperSlide>
+
+              {/* Botões de Navegação Personalizados */}
+              <div className="swiper-button-prev custom-navigation text-gray-800"></div>
+              <div className="swiper-button-next custom-navigation text-gray-800"></div>
+            </Swiper>
+          </div>
+
+        </div>
+      </div>
+
+      <div className="text-[22px] lg:text-[35px] font-bold text-center text-white pt-8 bg-gray-800">
+        <p className="p-2 border-b-4 w-[260px] md:w-[45%] mx-auto">Cubas de Banheiros Sob Medida</p>
+      </div>
+      <div className="bg-gray-800 flex flex-col lg:flex-row py-10 md:px-[10%] lg:px-12">
+        <div className="flex flex-col lg:mt-24 px-8 gap-4 mb-4 lg:w-[50%]">
+          <div className="relative">
+            <Image
+              src="/img/banheiro.jpg"
+              alt="Imagem 1"
+              width={500}
+              height={300}
+              className="object-cover border-2 border-white rounded-lg w-full h-auto"
+            />
+          </div>
+
+          <div className="relative">
+            <Image
+              src="/img/ban1.jpg"
+              alt="Imagem 2"
+              width={500}
+              height={300}
+              className="object-cover border-2 border-white rounded-lg w-full h-auto"
+            />
+          </div>
+        </div>
+
+        <div className="flex flex-col px-8 gap-4 mb-4 lg:w-[50%]">
+          <div className="relative">
+            <Image
+              src="/img/ban2.jpg"
+              alt="Imagem 3"
+              width={500}
+              height={300}
+              className="object-cover border-2 border-white rounded-lg w-full h-auto"
+            />
+          </div>
+          <div className="relative">
+            <Image
+              src="/img/ban3.jpg"
+              alt="Imagem 4"
+              width={500}
+              height={300}
+              className="object-cover border-2 border-white rounded-lg w-full h-auto"
+            />
+          </div>
+        </div>
+
+        <div className="flex flex-col lg:mt-24 px-8 mb-4 gap-4 lg:w-[50%]">
+          <div className="relative">
+            <Image
+              src="/img/ban5.jpg"
+              alt="Imagem 5"
+              width={500}
+              height={300}
+              className="object-cover border-2 border-white rounded-lg w-full h-auto"
+            />
+          </div>
+
+          <div className="relative">
+            <Image
+              src="/img/ban6.jpg"
+              alt="Imagem 6"
+              width={500}
+              height={300}
+              className="object-cover border-2 border-white rounded-lg w-full h-auto"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div className="h-[700px] bg-gray-100">
+        Teste
       </div>
     </section>
   );

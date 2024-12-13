@@ -9,8 +9,13 @@ import "swiper/css/pagination";
 import "swiper/css/autoplay";
 import { PiGearDuotone } from "react-icons/pi";
 import { GiBriefcase, GiStoneBlock } from "react-icons/gi";
+import './globals.css'
+
+import { useState } from "react";
 
 export default function Home() {
+  const [activeIndex, setActiveIndex] = useState(0);
+
   return (
     <section>
       {/* Swiper Section */}
@@ -19,25 +24,23 @@ export default function Home() {
         autoplay={{ delay: 8000 }}
         pagination={{ clickable: true }}
         className="h-screen text-white"
+        onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
       >
         {/* Slide 1 */}
-        <SwiperSlide
-          className="relative flex items-center justify-start bg-cover bg-center h-screen"
-          style={{ backgroundImage: `url('/img/fachada.jpg')` }}
-        >
+        <SwiperSlide className="relative flex items-center justify-start h-screen">
           <div
-            className="absolute inset-0"
-            style={{
-              background: "linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0))",
-            }}
+            className={`absolute inset-0 bg-cover bg-center transition-transform duration-1000 ${
+              activeIndex === 0 ? "zoom-active" : ""
+            }`}
+            style={{ backgroundImage: `url('/img/fachada.jpg')` }}
           ></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-transparent"></div>
           <div className="absolute bottom-16 left-[5%] lg:left-10 text-left px-4 md:px-10 pb-10 max-w-lg">
             <h1 className="text-xl md:text-3xl lg:text-4xl font-bold mb-3 sm:mb-5 text-white">
               Sua Marmoraria em Florianópolis
             </h1>
             <p className="text-sm sm:text-base md:text-lg lg:text-xl w-full sm:w-[80%] md:w-[600px] text-[#e7e7e7] font-medium mb-4 sm:mb-6">
-              Oferecemos uma ampla seleção de mármores e granitos nacionais e importados,
-              com acabamento impecável e designs únicos.
+              Oferecemos uma ampla seleção de mármores e granitos nacionais e importados, com acabamento impecável e designs únicos.
             </p>
             <Link href="https://api.whatsapp.com/send?phone=48998143419">
               <button className="px-6 py-2 bg-gray-900 hover:bg-gray-800 border-[1px] border-white rounded-full text-sm md:text-lg font-semibold transition">
@@ -48,23 +51,20 @@ export default function Home() {
         </SwiperSlide>
 
         {/* Slide 2 */}
-        <SwiperSlide
-          className="relative flex items-end justify-start bg-cover bg-center h-screen"
-          style={{ backgroundImage: `url('/img/gs1.jpg')` }}
-        >
+        <SwiperSlide className="relative flex items-end justify-start h-screen">
           <div
-            className="absolute inset-0"
-            style={{
-              background: "linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0))",
-            }}
+            className={`absolute inset-0 bg-cover bg-center transition-transform duration-1000 ${
+              activeIndex === 1 ? "zoom-active" : ""
+            }`}
+            style={{ backgroundImage: `url('/img/gs1.jpg')` }}
           ></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-transparent"></div>
           <div className="absolute bottom-16 left-[5%] lg:left-10 text-left px-4 md:px-10 pb-10 max-w-lg">
             <h1 className="text-xl md:text-3xl lg:text-4xl font-bold mb-3 sm:mb-5 text-white">
               Excelência em Serviços de Marmoraria
             </h1>
             <p className="text-sm sm:text-base md:text-lg lg:text-xl w-full sm:w-[80%] md:w-[600px] text-[#e7e7e7] font-medium mb-4 sm:mb-6">
-              Realizamos serviços personalizados e de alta qualidade para transformar
-              cada ambiente em uma obra de arte.
+              Realizamos serviços personalizados e de alta qualidade para transformar cada ambiente em uma obra de arte.
             </p>
             <Link href="/services">
               <button className="px-6 py-2 bg-gray-900 hover:bg-gray-800 border-[1px] border-white rounded-full text-sm md:text-lg font-semibold transition">
@@ -75,23 +75,20 @@ export default function Home() {
         </SwiperSlide>
 
         {/* Slide 3 */}
-        <SwiperSlide
-          className="relative flex items-end justify-start bg-cover bg-center h-screen"
-          style={{ backgroundImage: `url('/img/maquinario.avif')` }}
-        >
+        <SwiperSlide className="relative flex items-end justify-start h-screen">
           <div
-            className="absolute inset-0"
-            style={{
-              background: "linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0))",
-            }}
+            className={`absolute inset-0 bg-cover bg-center transition-transform duration-1000 ${
+              activeIndex === 2 ? "zoom-active" : ""
+            }`}
+            style={{ backgroundImage: `url('/img/maquinario.avif')` }}
           ></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-transparent"></div>
           <div className="absolute bottom-16 left-[5%] lg:left-10 text-left px-4 md:px-10 pb-10 max-w-lg">
             <h1 className="text-xl md:text-3xl lg:text-4xl font-bold mb-3 sm:mb-5 text-white">
               Tecnologia e Profissionalismo
             </h1>
             <p className="text-sm sm:text-base md:text-lg lg:text-xl w-full sm:w-[80%] md:w-[600px] text-[#e7e7e7] font-medium mb-4 sm:mb-6">
-              Utilizamos os melhores maquinários e contamos com uma equipe altamente
-              qualificada para entregar resultados excepcionais.
+              Utilizamos os melhores maquinários e contamos com uma equipe altamente qualificada para entregar resultados excepcionais.
             </p>
             <Link href="https://maps.app.goo.gl/NPSJPNp6B877nH396">
               <button className="px-6 py-2 bg-gray-900 hover:bg-gray-800 border-[1px] border-white rounded-full text-sm md:text-lg font-semibold transition">

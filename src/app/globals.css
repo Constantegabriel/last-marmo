@@ -21,6 +21,35 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+
+.zoom-active {
+  animation: zoomEffect 10s ease-in-out infinite;
+}
+
+@keyframes zoomEffect {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.10);
+  }
+}
+
+.custom-bullet {
+  background-color: #2d3748; /* gray-800 */
+  opacity: 0.7;
+}
+
+.swiper-pagination-bullet-active
+{
+  background-color: #ffffff; /* gray-800 */
+  opacity: 1;
+}
+
+/* Estilizando os botões de navegação */
+.custom-navigation {
+  color: #2d3748; /* gray-800 */
+}
 /* Animação de entrada para o alerta surgir da esquerda para a direita com leve escala */
 @keyframes slide-in-left {
   from {
