@@ -2,23 +2,29 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Pagination } from "swiper/modules";
+import './globals.css'
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/autoplay";
+import { Autoplay, Pagination } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { useEffect, useState } from "react";
+
 import { PiGearDuotone } from "react-icons/pi";
 import { GiBriefcase, GiStoneBlock } from "react-icons/gi";
-import './globals.css'
-
-import { useState } from "react";
 
 export default function Home() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [backgroundImage, setBackgroundImage] = useState("/img/gs1.jpg");
+
+  useEffect(() => {
+    if (typeof window !== "undefined" && window.innerWidth < 768) {
+      setBackgroundImage("/img/cozinha.jpg");
+    }
+  }, []);
 
   return (
     <section>
-      {/* Swiper Section */}
       <Swiper
         modules={[Autoplay, Pagination]}
         autoplay={{ delay: 8000 }}
@@ -26,15 +32,20 @@ export default function Home() {
         className="h-screen text-white"
         onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
       >
-        {/* Slide 1 */}
         <SwiperSlide className="relative flex items-center justify-start h-screen">
           <div
-            className={`absolute inset-0 bg-cover bg-center transition-transform duration-1000 ${
+            className={`absolute flex md:hidden inset-0 bg-cover bg-center transition-transform duration-1000 ${
+              activeIndex === 0 ? "zoom-active" : ""
+            }`}
+            style={{ backgroundImage: `url('/img/fachada3.jpeg')` }}
+          ></div>
+          <div
+            className={`absolute hidden md:flex inset-0 bg-cover bg-center transition-transform duration-1000 ${
               activeIndex === 0 ? "zoom-active" : ""
             }`}
             style={{ backgroundImage: `url('/img/fachada.jpg')` }}
           ></div>
-          <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-transparent"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-black/50 md:from-black/80 to-transparent"></div>
           <div className="absolute bottom-16 left-[5%] lg:left-10 text-left px-4 md:px-10 pb-10 max-w-lg">
             <h1 className="text-xl md:text-3xl lg:text-4xl font-bold mb-3 sm:mb-5 text-white">
               Sua Marmoraria em Florianópolis
@@ -50,39 +61,45 @@ export default function Home() {
           </div>
         </SwiperSlide>
 
-        {/* Slide 2 */}
-        <SwiperSlide className="relative flex items-end justify-start h-screen">
-          <div
-            className={`absolute inset-0 bg-cover bg-center transition-transform duration-1000 ${
-              activeIndex === 1 ? "zoom-active" : ""
-            }`}
-            style={{ backgroundImage: `url('/img/gs1.jpg')` }}
-          ></div>
-          <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-transparent"></div>
-          <div className="absolute bottom-16 left-[5%] lg:left-10 text-left px-4 md:px-10 pb-10 max-w-lg">
-            <h1 className="text-xl md:text-3xl lg:text-4xl font-bold mb-3 sm:mb-5 text-white">
-              Excelência em Serviços de Marmoraria
-            </h1>
-            <p className="text-sm sm:text-base md:text-lg lg:text-xl w-full sm:w-[80%] md:w-[600px] text-[#e7e7e7] font-medium mb-4 sm:mb-6">
-              Realizamos serviços personalizados e de alta qualidade para transformar cada ambiente em uma obra de arte.
-            </p>
-            <Link href="/services">
-              <button className="px-6 py-2 bg-gray-900 hover:bg-gray-800 border-[1px] border-white rounded-full text-sm md:text-lg font-semibold transition">
-                Conheça nossos Serviços
-              </button>
-            </Link>
-          </div>
-        </SwiperSlide>
+        {backgroundImage && (
+          <SwiperSlide className="relative flex items-end justify-start h-screen">
+            <div
+              className={`absolute inset-0 bg-cover bg-center transition-transform duration-1000 ${
+                activeIndex === 1 ? "zoom-active" : ""
+              }`}
+              style={{ backgroundImage: `url('${backgroundImage}')` }}
+            ></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-black/50 md:from-black/80 to-transparent"></div>
+            <div className="absolute bottom-16 left-[5%] lg:left-10 text-left px-4 md:px-10 pb-10 max-w-lg">
+              <h1 className="text-xl md:text-3xl lg:text-4xl font-bold mb-3 sm:mb-5 text-white">
+                Excelência em Serviços de Marmoraria
+              </h1>
+              <p className="text-sm sm:text-base md:text-lg lg:text-xl w-full sm:w-[80%] md:w-[600px] text-[#e7e7e7] font-medium mb-4 sm:mb-6">
+                Realizamos serviços personalizados e de alta qualidade para transformar cada ambiente em uma obra de arte.
+              </p>
+              <Link href="/services">
+                <button className="px-6 py-2 bg-gray-900 hover:bg-gray-800 border-[1px] border-white rounded-full text-sm md:text-lg font-semibold transition">
+                  Conheça nossos Serviços
+                </button>
+              </Link>
+            </div>
+          </SwiperSlide>
+        )}
 
-        {/* Slide 3 */}
         <SwiperSlide className="relative flex items-end justify-start h-screen">
           <div
-            className={`absolute inset-0 bg-cover bg-center transition-transform duration-1000 ${
+            className={`absolute flex md:hidden inset-0 bg-cover bg-center transition-transform duration-1000 ${
               activeIndex === 2 ? "zoom-active" : ""
             }`}
-            style={{ backgroundImage: `url('/img/maquinario.avif')` }}
+            style={{ backgroundImage: `url('/img/maq3.jpeg')` }}
           ></div>
-          <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-transparent"></div>
+          <div
+            className={`absolute hidden md:flex inset-0 bg-cover bg-center transition-transform duration-1000 ${
+              activeIndex === 2 ? "zoom-active" : ""
+            }`}
+            style={{ backgroundImage: `url('/img/maq1.jpeg')` }}
+          ></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-black/50 md:from-black/80 to-transparent"></div>
           <div className="absolute bottom-16 left-[5%] lg:left-10 text-left px-4 md:px-10 pb-10 max-w-lg">
             <h1 className="text-xl md:text-3xl lg:text-4xl font-bold mb-3 sm:mb-5 text-white">
               Tecnologia e Profissionalismo
@@ -99,9 +116,6 @@ export default function Home() {
         </SwiperSlide>
       </Swiper>
 
-      {/* Serviços em destaque */}
-
-      {/* Sobre nós */}
       <div className="bg-white py-16 px-6 md:px-20">
         <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-8">
           <Image
@@ -137,7 +151,6 @@ export default function Home() {
         </h2>
         <div className="flex text-gray-800 flex-wrap justify-center gap-6">
           
-          {/* Bloco 1: Portfólio */}
           <div className="text-center bg-white p-8 border-2 border-gray-800 pt-12 pb-6 rounded-lg hover:shadow-lg transition w-full md:w-[350px]">
             <p className="text-center flex justify-center text-[35px] mb-[10px]">
               <GiBriefcase />
@@ -146,12 +159,11 @@ export default function Home() {
             <p className="text-gray-800 text-md mt-4">
               Inspire-se com nossos projetos realizados, criados com precisão e dedicação.
             </p>
-            <a href="./services" className="font-semibold text-gray-600 text-right text-[15px] underline mt-[19px] block">
+            <a href="/services" className="font-semibold text-gray-600 text-right text-[15px] underline mt-[19px] block">
               Saiba mais
             </a>
           </div>
 
-          {/* Bloco 2: Produtos */}
           <div className="text-center bg-white p-8 pt-12 border-2 border-gray-800 pb-6 rounded-lg hover:shadow-lg transition w-full md:w-[350px]">
             <p className="text-center flex justify-center text-[35px] mb-[10px]">
               <GiStoneBlock />
@@ -160,12 +172,11 @@ export default function Home() {
             <p className="text-gray-800 text-md mt-4">
               Trabalhamos com os melhores materiais para oferecer qualidade e sofisticação.
             </p>
-            <a href="./materials" className="font-semibold text-gray-600 text-right text-[15px] underline mt-[19px] block">
+            <a href="/materials" className="font-semibold text-gray-600 text-right text-[15px] underline mt-[19px] block">
               Saiba mais
             </a>
           </div>
 
-          {/* Bloco 3: Maquinário */}
           <div className="text-center bg-white p-8 pt-12 border-2 border-gray-800 pb-6 rounded-lg hover:shadow-lg transition w-full md:w-[350px]">
             <p className="text-center flex justify-center text-[35px] mb-[10px]">
               <PiGearDuotone />
@@ -174,14 +185,13 @@ export default function Home() {
             <p className="text-gray-800 text-md mt-4">
               Modernos equipamentos e uma equipe qualificada garantem resultados superiores.
             </p>
-            <a href="./enterprise" className="font-semibold text-gray-600 text-right text-[15px] underline mt-[19px] block">
+            <a href="/enterprise" className="font-semibold text-gray-600 text-right text-[15px] underline mt-[19px] block">
               Saiba mais
             </a>
           </div>
 
         </div>
       </div>
-      {/* Galeria */}
       <div className="bg-gray-200 py-12 px-6 md:px-20">
         <h2 className="text-center text-gray-800 text-2xl md:text-4xl font-bold mb-8">
           Galeria de Serviços
@@ -220,6 +230,36 @@ export default function Home() {
           </Link>
         </div>
       </div>
+      <div className="bg-white py-20 px-4 sm:px-8 md:px-20">
+        <div className="flex flex-col lg:flex-row items-center gap-8">
+          <div className="w-full md:w-3/5 flex justify-center">
+            <video
+              src="/video/materials-video.mp4"
+              autoPlay
+              loop
+              muted
+              className="w-full max-w-[600px] md:max-w-[100%] border-l-[8px] border-gray-800 shadow-lg rounded-lg"
+            />
+          </div>
+          <div className="w-full lg:w-3/5 text-left">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl text-gray-800 font-bold mb-4">
+              Escolha, Adicione e Consulte
+            </h2>
+            <p className="text-gray-600 mb-4">
+              Explore nossa seleção dos materiais mais populares e preferidos pelos clientes. Adicione facilmente os itens ao seu carrinho e tenha tudo pronto para uma experiência personalizada.
+            </p>
+            <p className="text-gray-600 mb-6">
+              Após selecionar seus materiais, envie seu carrinho diretamente para o nosso WhatsApp. Nossa equipe está pronta para oferecer uma consultoria especializada e tirar todas as suas dúvidas.
+            </p>
+            <Link href="/materials">
+              <button className="bg-gray-800 px-8 py-[10px] hover:bg-gray-700 rounded-full font-semibold">
+                Ver Materiais
+              </button>
+            </Link>
+          </div>
+        </div>
+      </div>
+
     </section>
   );
 }

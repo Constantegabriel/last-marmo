@@ -26,7 +26,7 @@ export default function Navbar() {
     <>
       {/* Faixa de Contato */}
       <div
-        className={`bg-gray-100 text-gray-900 py-3 md:py-2 px-6 text-sm md:text-base font-medium fixed top-0 w-full z-[1000] transition-transform duration-500 ${
+        className={`bg-gray-100 text-gray-800 py-3 md:py-2 px-6 text-sm md:text-base font-medium fixed top-0 w-full z-[1000] transition-transform duration-500 ${
           showContactBar ? "translate-y-0" : "-translate-y-full"
         } flex items-center gap-6`}
       >

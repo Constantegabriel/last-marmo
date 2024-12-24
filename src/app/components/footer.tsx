@@ -4,7 +4,7 @@ import logo from "../../../public/img/logo_marmo.png";
 
 export default function Footer() {
   return (
-    <footer className="relative z-100 bg-gray-800 text-white py-14">
+    <footer className="relative z-100 bg-gray-800 text-white pt-14 pb-6">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 px-12">
         {/* Informações da empresa */}
         <div className="mt-[20px]">
@@ -46,19 +46,24 @@ export default function Footer() {
       </div>
 
       {/* Créditos */}
-      <div className="text-center mt-8">
+      <div className="text-center mt-12">
         <h1 className="text-sm">
-          Desenvolvido em 2024 por{" "}
+        Desenvolvido em conjunto entre {" "}
+          <Link
+            href="https://aiastec.com/"
+            className="underline hover:text-blue-400 transition"
+          >
+            AiasTec
+          </Link>{" "}
+          &{" "}
           <Link
             href="https://www.instagram.com/constante.design_/?utm_source=ig_web_button_share_sheet"
             className="underline hover:text-blue-400 transition"
           >
-            CONSTANTE
+            Constante Design
           </Link>
         </h1>
       </div>
-
-      
     </footer>
   );
 }
