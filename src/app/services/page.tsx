@@ -148,8 +148,9 @@ export default function Services() {
               </SwiperSlide>
 
               {/* Botões de Navegação Personalizados */}
-              <div className="swiper-button-prev custom-navigation text-gray-800"></div>
-              <div className="swiper-button-next custom-navigation text-gray-800"></div>
+              <div className="swiper-button-prev text-white"></div>
+              <div className="swiper-button-next text-white"></div>
+              <div className="custom-navigation text-white"></div>
             </Swiper>
           </div>
 
@@ -235,7 +236,7 @@ export default function Services() {
       {/* Título e Descrição Geral */}
       <div className="text-center">
         <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
-          Salas de Estar e Jantar para Inspirar
+          Salas de Estar e de Jantar para Inspirar
         </h2>
         <p className="text-gray-600 mb-12">
           Descubra a elegância e sofisticação em nossas salas,
@@ -353,8 +354,8 @@ export default function Services() {
         </Swiper>
 
         {/* Botões de Navegação */}
-        <div className="swiper-button-prev absolute top-[45%] left-0 z-10 w-10 h-10 text-blue-600 flex items-center justify-center cursor-pointer hover:text-blue-800 transition"></div>
-        <div className="swiper-button-next absolute top-[45%] right-0 z-10 w-10 h-10 text-blue-600 flex items-center justify-center cursor-pointer hover:text-blue-800 transition"></div>
+        <div className="swiper-button-prev absolute top-[45%] left-0 z-10 w-10 h-10 text-gray-800 flex items-center justify-center cursor-pointer hover:text-gray-700 transition"></div>
+        <div className="swiper-button-next absolute top-[45%] right-0 z-10 w-10 h-10 text-gray-800 flex items-center justify-center cursor-pointer hover:text-gray-700 transition"></div>
       </div>
     </section>
 
@@ -389,13 +390,6 @@ export default function Services() {
             className="w-[80%] lg:w-full mx-auto lg:mt-20 h-60 object-cover rounded-lg shadow-2xl"
           />
         </div>
-        <div className="flex mt-[25px] lg:mt-[15px] justify-center">
-          <Link href="/services">
-            <button className="px-10 py-[10px] rounded-full text-white font-medium bg-gray-800">
-              Entre em Contato
-            </button>
-          </Link>
-        </div>
       </div>
 
       <div className="bg-white py-16 px-6 md:px-20">
@@ -419,9 +413,11 @@ export default function Services() {
               Entre em contato e descubra como podemos transformar seu espaço em um ambiente moderno, sofisticado e funcional. 
               Vamos criar algo único juntos!
             </p>
-            <button className="bg-gray-800 text-white mt-6 px-8 py-3 hover:bg-gray-700 rounded-full font-semibold transition">
-              Fale Conosco
-            </button>
+            <Link href="/contact">
+              <button className="bg-gray-800 text-white mt-6 px-8 py-3 hover:bg-gray-700 rounded-full font-semibold transition">
+                Fale Conosco
+              </button>
+            </Link>
           </div>
         </div>
       </div>

@@ -159,14 +159,13 @@ export default function MaterialsPage() {
     setShowAlert(true);
     setIsExiting(false);
     setTimeout(() => {
-        setIsExiting(true);
-        setTimeout(() => {
+      setIsExiting(true);
+      setTimeout(() => {
         setShowAlert(false);
-        }, 500); // Tempo igual à duração da animação de saída
+      }, 500); // Tempo igual à duração da animação de saída
     }, 2000); // Alerta visível por 2 segundos
   };
 
-  
   const addToCart = (material: Material) => {
     if (!cart.find((item) => item.id === material.id)) {
       setCart([...cart, material]);
@@ -181,18 +180,31 @@ export default function MaterialsPage() {
   const generateWhatsAppMessage = () => {
     if (cart.length === 0) return "";
     return cart
-      .map(
-        (item) => `*${item.title}*\nDescrição: ${item.description}`
-      ) 
+      .map((item) => `*${item.title}*\nDescrição: ${item.description}`)
       .join("\n\n");
   };
 
   const sendToWhatsApp = () => {
     const message = generateWhatsAppMessage();
-    const whatsappUrl = `https://wa.me/48998143419?text=${encodeURIComponent(
+    const whatsappUrl = `https://wa.me/48998442768?text=${encodeURIComponent(
       `Olá, gostaria de um orçamento para as seguintes pedras:\n\n${message}`
     )}`;
     window.open(whatsappUrl, "_blank");
+  };
+
+  const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>, targetId: string) => {
+    e.preventDefault();
+    const targetElement = document.getElementById(targetId);
+    if (targetElement) {
+      const offset = 150; // Ajuste de deslocamento acima do elemento
+      const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+      const offsetPosition = elementPosition - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
+    }
   };
 
   useEffect(() => {
@@ -217,7 +229,7 @@ export default function MaterialsPage() {
           Material adicionado ao carrinho!
         </div>
       )}
-  
+
       {/* Subnavbar */}
       <nav className="hidden lg:grid w-full pt-[160px] bg-gray-100 shadow-md py-4">
         <ul className="flex justify-around px-[10px] xl:px-[10%] mr-[350px] space-x-6">
@@ -225,6 +237,7 @@ export default function MaterialsPage() {
             <li key={category}>
               <a
                 href={`#${category}`}
+                onClick={(e) => handleSmoothScroll(e, category)}
                 className="text-white bg-gray-800 px-10 py-2 rounded-full font-medium hover:text-gray-300 transition-colors"
               >
                 {category}s

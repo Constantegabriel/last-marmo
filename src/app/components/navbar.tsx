@@ -5,10 +5,12 @@ import Image from "next/image";
 import { FaPhoneAlt, FaWhatsapp } from "react-icons/fa";
 import logo from "../../../public/img/logo_marmo.png";
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [showContactBar, setShowContactBar] = useState(true);
+  const pathname = usePathname(); // Hook para obter a rota atual
 
   useEffect(() => {
     const handleScroll = () => {
@@ -73,19 +75,44 @@ export default function Navbar() {
 
           {/* Links (Desktop) */}
           <div className="hidden md:flex items-center text-[16px] gap-8 font-medium">
-            <Link href="/" className="hover:text-gray-300">
+            <Link
+              href="/"
+              className={`hover:text-gray-300 ${
+                pathname === "/" ? "border-b-2 border-white" : ""
+              }`}
+            >
               Home
             </Link>
-            <Link href="/materials" className="hover:text-gray-300">
+            <Link
+              href="/materials"
+              className={`hover:text-gray-300 ${
+                pathname === "/materials" ? "border-b-2 border-white" : ""
+              }`}
+            >
               Materiais
             </Link>
-            <Link href="/services" className="hover:text-gray-300">
+            <Link
+              href="/services"
+              className={`hover:text-gray-300 ${
+                pathname === "/services" ? "border-b-2 border-white" : ""
+              }`}
+            >
               Serviços
             </Link>
-            <Link href="/enterprise" className="hover:text-gray-300">
+            <Link
+              href="/enterprise"
+              className={`hover:text-gray-300 ${
+                pathname === "/enterprise" ? "border-b-2 border-white" : ""
+              }`}
+            >
               Empresa
             </Link>
-            <Link href="/contact" className="hover:text-gray-300">
+            <Link
+              href="/contact"
+              className={`hover:text-gray-300 ${
+                pathname === "/contact" ? "border-b-2 border-white" : ""
+              }`}
+            >
               Contato
             </Link>
           </div>

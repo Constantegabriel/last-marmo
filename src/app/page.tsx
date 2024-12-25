@@ -28,7 +28,7 @@ export default function Home() {
       <Swiper
         modules={[Autoplay, Pagination]}
         autoplay={{ delay: 8000 }}
-        pagination={{ clickable: true }}
+        pagination={{ clickable: true, bulletClass: "custom-bullet" }}
         className="h-screen text-white"
         onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
       >
@@ -53,7 +53,7 @@ export default function Home() {
             <p className="text-sm sm:text-base md:text-lg lg:text-xl w-full sm:w-[80%] md:w-[600px] text-[#e7e7e7] font-medium mb-4 sm:mb-6">
               Oferecemos uma ampla seleção de mármores e granitos nacionais e importados, com acabamento impecável e designs únicos.
             </p>
-            <Link href="https://api.whatsapp.com/send?phone=48998143419">
+            <Link href="https://api.whatsapp.com/send?phone=48998442768">
               <button className="px-6 py-2 bg-gray-900 hover:bg-gray-800 border-[1px] border-white rounded-full text-sm md:text-lg font-semibold transition">
                 Solicite um Orçamento
               </button>
@@ -107,13 +107,14 @@ export default function Home() {
             <p className="text-sm sm:text-base md:text-lg lg:text-xl w-full sm:w-[80%] md:w-[600px] text-[#e7e7e7] font-medium mb-4 sm:mb-6">
               Utilizamos os melhores maquinários e contamos com uma equipe altamente qualificada para entregar resultados excepcionais.
             </p>
-            <Link href="https://maps.app.goo.gl/NPSJPNp6B877nH396">
+            <Link href="/enterprise#equipe">
               <button className="px-6 py-2 bg-gray-900 hover:bg-gray-800 border-[1px] border-white rounded-full text-sm md:text-lg font-semibold transition">
                 Conheça nossa Estrutura
               </button>
             </Link>
           </div>
         </SwiperSlide>
+        <div className="custom-bullet text-white"></div>
       </Swiper>
 
       <div className="bg-white py-16 px-6 md:px-20">
@@ -149,9 +150,9 @@ export default function Home() {
         <h2 className="text-center text-gray-100 text-2xl md:text-4xl font-bold mb-12">
           Descubra por que somos a marmoraria certa para você
         </h2>
-        <div className="flex text-gray-800 flex-wrap justify-center gap-6">
+        <div className="flex text-gray-800 mx-[6%] flex-wrap justify-center gap-6">
           
-          <div className="text-center bg-white p-8 border-2 border-gray-800 pt-12 pb-6 rounded-lg hover:shadow-lg transition w-full md:w-[350px]">
+          <div className="text-center bg-white border-b-[10px] border-gray-400 p-8 pt-12 pb-6 hover:shadow-lg transition w-full md:w-[350px]">
             <p className="text-center flex justify-center text-[35px] mb-[10px]">
               <GiBriefcase />
             </p>
@@ -164,7 +165,7 @@ export default function Home() {
             </a>
           </div>
 
-          <div className="text-center bg-white p-8 pt-12 border-2 border-gray-800 pb-6 rounded-lg hover:shadow-lg transition w-full md:w-[350px]">
+          <div className="text-center bg-white border-b-[10px] border-gray-400 p-8 pt-12 pb-6 hover:shadow-lg transition w-full md:w-[350px]">
             <p className="text-center flex justify-center text-[35px] mb-[10px]">
               <GiStoneBlock />
             </p>
@@ -177,7 +178,7 @@ export default function Home() {
             </a>
           </div>
 
-          <div className="text-center bg-white p-8 pt-12 border-2 border-gray-800 pb-6 rounded-lg hover:shadow-lg transition w-full md:w-[350px]">
+          <div className="text-center bg-white border-b-[10px] border-gray-400 p-8 pt-12 pb-6 hover:shadow-lg transition w-full md:w-[350px]">
             <p className="text-center flex justify-center text-[35px] mb-[10px]">
               <PiGearDuotone />
             </p>
@@ -224,7 +225,7 @@ export default function Home() {
         </div>
         <div className="flex mt-[25px] lg:mt-[15px] justify-center">
           <Link href="/services">
-            <button className="px-10 py-[10px] rounded-full text-white font-medium bg-gray-800">
+            <button className="px-10 py-[10px] hover:bg-gray-700 rounded-full text-white font-medium bg-gray-800">
               Veja Nossas Soluções
             </button>
           </Link>
@@ -238,7 +239,7 @@ export default function Home() {
               autoPlay
               loop
               muted
-              className="w-full max-w-[600px] md:max-w-[100%] border-l-[8px] border-gray-800 shadow-lg rounded-lg"
+              className="w-full max-w-[600px] md:max-w-[100%]shadow-lg rounded-lg"
             />
           </div>
           <div className="w-full lg:w-3/5 text-left">

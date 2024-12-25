@@ -23,7 +23,7 @@ export default function Wpp() {
 
   return (
     <a
-      href="https://wa.me/48998143419"
+      href="https://wa.me/48998442768"
       target="_blank"
       rel="noopener noreferrer"
       className={`fixed bottom-6 right-6 z-[1000] bg-green-500 text-white p-3 rounded-full shadow-lg transition-transform duration-500 hover:scale-110 ${

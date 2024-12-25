@@ -1,37 +1,65 @@
+'use client';
+
 import Link from "next/link";
 import Image from "next/image";
 import logo from "/public/img/logo_marmo.png"; // Caminho simplificado
 import { FaWhatsapp, FaInstagram, FaFacebook } from "react-icons/fa";
+import { FormEvent, useState } from "react";
 
 export default function Contato() {
+  const [formStatus, setFormStatus] = useState<string | null>(null);
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const form = e.currentTarget; // Obtém o formulário diretamente
+    const formData = new FormData(form);
+
+    const data = {
+      name: formData.get("name") as string,
+      email: formData.get("email") as string,
+      tel: formData.get("tel") as string,
+      message: formData.get("message") as string,
+    };
+
+    try {
+      const response = await fetch("/api/send-email", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (response.ok) {
+        setFormStatus("Mensagem enviada com sucesso!");
+        form.reset(); // Limpa o formulário após sucesso
+      } else {
+        setFormStatus("Erro ao enviar mensagem. Tente novamente.");
+      }
+    } catch (error) {
+      console.error("Erro ao enviar mensagem:", error);
+      setFormStatus("Erro ao enviar mensagem. Tente novamente.");
+    }
+  };
+
   return (
-    <section className="bg-gray-200 pt-[200px] min-h-screen py-16 px-6 md:px-20">
-      <div className="max-w-7xl mx-auto">
+    <section className="bg-gray-200 pt-[200px] min-h-screen py-16 md:px-20">
+      <div className="max-w-full md:max-w-7xl mx-auto">
         {/* Bloco de Contato e Formulário Unificados */}
-        <div className="bg-gray-900 bg-opacity-90 text-white p-10 shadow-lg grid grid-cols-1 md:grid-cols-2 gap-16">
+        <div className="bg-gray-800 text-white p-10 shadow-lg grid grid-cols-1 md:grid-cols-2 gap-16">
           {/* Seção de Contato */}
           <div>
-            <div className="w-[150px] mb-6">
-              <Link href="/" className="flex items-center">
-                <Image
-                  src={logo}
-                  alt="Logo Marmoraria Florianópolis"
-                  width={150}
-                  height={50}
-                  className="object-contain"
-                />
-              </Link>
-            </div>
-            <h2 className="text-3xl font-bold mb-6">Contate-nos</h2>
-            <p className="mb-6 text-gray-300">
+            <h2 className="text-5xl font-bold mb-6">Contate-nos</h2>
+            <p className="mb-10 text-xl text-gray-100">
               Tem alguma ideia incrível ou precisa de um orçamento? Entre em contato, adoraríamos ouvir mais sobre o seu projeto e como podemos ajudar!
             </p>
 
             <div className="space-y-4">
               <p>
                 <strong>Email:</strong>{" "}
-                <a href="mailto:contato@marmoraria.com" className="text-gray-300 hover:text-white">
-                  contato@marmoraria.com
+                <a href="mailto:vendas.marmorariafpolis@gmail.com" className="text-gray-300 hover:text-white">
+                  vendas.marmorariafpolis@gmail.com
                 </a>
               </p>
               <p>
@@ -40,10 +68,13 @@ export default function Contato() {
               <p>
                 <strong>WhatsApp:</strong> (48) 99844-2768
               </p>
+              <p>
+                <strong>Endereço:</strong> R. Gregório Flôr, 170 - Rio Caveiras, Biguaçu - SC, 88161-780
+              </p>
             </div>
 
             <div className="flex gap-6 mt-8">
-              <Link href="https://api.whatsapp.com/send?phone=48998143419" target="_blank">
+              <Link href="https://api.whatsapp.com/send?phone=48998442768" target="_blank">
                 <FaWhatsapp size={30} className="hover:text-green-400 text-green-500 transition cursor-pointer" />
               </Link>
               <Link href="https://www.instagram.com/marmorariaflorianopolis" target="_blank">
@@ -57,7 +88,7 @@ export default function Contato() {
 
           {/* Formulário de Contato */}
           <div>
-            <form action="#" method="post">
+            <form onSubmit={handleSubmit}>
               <div className="mb-6">
                 <label htmlFor="name" className="block text-gray-100 font-medium mb-2">
                   Nome
@@ -95,7 +126,6 @@ export default function Contato() {
                   id="tel"
                   name="tel"
                   placeholder="Digite seu número de telefone*"
-                  pattern="\(\d{2}\)\s\d{4,5}-\d{4}"
                   className="w-full px-4 py-2 text-white bg-gray-800 bg-opacity-0 border border-white focus:outline-none"
                   required
                 />
@@ -119,6 +149,15 @@ export default function Contato() {
                 Enviar Mensagem
               </button>
             </form>
+            {formStatus && (
+              <p
+                className={`mt-4 text-center text-lg font-medium ${
+                  formStatus.includes("sucesso") ? "text-green-400" : "text-red-400"
+                }`}
+              >
+                {formStatus}
+              </p>
+            )}
           </div>
         </div>
 
