@@ -222,7 +222,7 @@ export default function MaterialsPage() {
     <div className="relative flex flex-col min-h-screen">
       {showAlert && (
         <div
-          className={`fixed top-[140px] left-0 z-50 bg-gray-800 rounded-r border-white border-r-[3px] border-b-[3px] shadow-lg text-white px-4 py-2 ${
+          className={`fixed top-[140px] left-0 z-50 bg-gray-800 border-gray-500 border-l-8 shadow-lg text-white px-4 py-2 ${
             isExiting ? "animate-slide-out" : "animate-slide-in"
           }`}
         >
@@ -291,7 +291,7 @@ export default function MaterialsPage() {
       </div>  
   
       <button
-        className="md:hidden fixed bottom-4 right-4 bg-gray-800 text-white px-6 py-3 rounded-full shadow-lg flex items-center gap-2"
+        className="md:hidden fixed bottom-4 border-[2px] border-white right-4 bg-gray-800 text-white px-6 py-3 rounded-full shadow-lg flex items-center gap-2"
         onClick={() => setIsModalOpen(true)}
       >
         <AiOutlineShoppingCart className="text-2xl mt-[-2px]" />
