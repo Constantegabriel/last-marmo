@@ -60,7 +60,10 @@ export default function Services() {
             <Swiper
               modules={[Pagination, Navigation, Autoplay]}
               spaceBetween={10}
-              slidesPerView={2}
+              slidesPerView={1}
+              breakpoints={{
+                668: { slidesPerView: 2 },
+              }}
               loop={true}
               autoplay={{ delay: 3000 }}
               pagination={{ clickable: true, bulletClass: "swiper-pagination-bullet custom-bullet" }}
@@ -260,7 +263,7 @@ export default function Services() {
         >
           {/* Slide 1 */}
           <SwiperSlide>
-            <div className="bg-white shadow-lg overflow-hidden">
+            <div className="bg-white shadow-lg border-2 border-gray-800 overflow-hidden">
               <Image
                 src="/img/sala1.jpg"
                 alt="Sala Clássica"
@@ -278,7 +281,7 @@ export default function Services() {
 
           {/* Slide 2 */}
           <SwiperSlide>
-            <div className="bg-white shadow-lg overflow-hidden">
+            <div className="bg-white shadow-lg border-2 border-gray-800 overflow-hidden">
               <Image
                 src="/img/sala2.jpg"
                 alt="Mesa de Jantar Moderna"
@@ -287,7 +290,7 @@ export default function Services() {
                 className="object-cover w-full h-72"
               />
               <div className="p-6">
-                <h3 className="text-xl font-semibold text-gray-800">Bancada de Mármore Elegante</h3>
+                <h3 className="text-xl font-semibold text-gray-800">Bancada Nobre de Mármore</h3>
                 <p className="text-gray-600 mt-2">
                 Uma peça funcional e moderna, ideal para complementar salas de estar com um toque de sofisticação.
                 </p>
@@ -297,7 +300,7 @@ export default function Services() {
 
           {/* Slide 4 */}
           <SwiperSlide>
-            <div className="bg-white shadow-lg overflow-hidden">
+            <div className="bg-white shadow-lg border-2 border-gray-800 overflow-hidden">
               <Image
                 src="/img/sala4.jpg"
                 alt="Mesa de Centro Elegante"
@@ -316,7 +319,7 @@ export default function Services() {
 
           {/* Slide 5 */}
           <SwiperSlide>
-            <div className="bg-white shadow-lg overflow-hidden">
+            <div className="bg-white shadow-lg border-2 border-gray-800 overflow-hidden">
               <Image
                 src="/img/sala5.jpg"
                 alt="Sala com Toques Rústicos"
@@ -335,7 +338,7 @@ export default function Services() {
 
           {/* Slide 6 */}
           <SwiperSlide>
-            <div className="bg-white shadow-lg overflow-hidden">
+            <div className="bg-white shadow-lg border-2 border-gray-800 overflow-hidden">
               <Image
                 src="/img/sala6.jpg"
                 alt="Sala Minimalista"

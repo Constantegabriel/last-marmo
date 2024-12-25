@@ -73,9 +73,9 @@ export default function Empresa() {
                 alt="Logo Parceiro 1"
                 width={200}
                 height={200}
-                className="mx-auto h-[200px] mb-4"
+                className="mx-auto h-[150px] sm:h-[200px] mb-4"
               />
-              <h3 className="text-lg font-semibold text-white">Unique Jurerê</h3>
+              <h3 className="text-md sm:text-xl font-semibold text-white">Unique Jurerê</h3>
             </div>
           </SwiperSlide>
 
@@ -87,9 +87,9 @@ export default function Empresa() {
                 alt="Logo Parceiro 2"
                 width={200}
                 height={200}
-                className="mx-auto h-[200px] mb-4"
+                className="mx-auto h-[150px] sm:h-[200px] mb-4"
               />
-              <h3 className="text-lg font-semibold text-white">CFL Empreendimentos</h3>
+              <h3 className="text-md sm:text-xl font-semibold text-white">CFL Empreendimentos</h3>
             </div>
           </SwiperSlide>
 
@@ -101,9 +101,9 @@ export default function Empresa() {
                 alt="Logo Parceiro 3"
                 width={200}
                 height={200}
-                className="mx-auto h-[200px] mb-4"
+                className="mx-auto h-[150px] sm:h-[200px] mb-4"
               />
-              <h3 className="text-lg font-semibold text-white">Construtora Sanluzzi</h3>
+              <h3 className="text-md sm:text-xl font-semibold text-white">Construtora Sanluzzi</h3>
             </div>
           </SwiperSlide>
 
@@ -115,9 +115,9 @@ export default function Empresa() {
                 alt="Logo Parceiro 4"
                 width={200}
                 height={200}
-                className="mx-auto h-[200px] mb-4"
+                className="mx-auto h-[150px] sm:h-[200px] mb-4"
               />
-              <h3 className="text-lg font-semibold text-white">Shopping Itaguaçu</h3>
+              <h3 className="text-md sm:text-xl font-semibold text-white">Shopping Itaguaçu</h3>
             </div>
           </SwiperSlide>
 
@@ -129,9 +129,9 @@ export default function Empresa() {
                 alt="Logo Parceiro 5"
                 width={200}
                 height={200}
-                className="mx-auto h-[200px] mb-4"
+                className="mx-auto h-[150px] sm:h-[200px] mb-4"
               />
-              <h3 className="text-lg font-semibold text-white">Beiramar Shopping</h3>
+              <h3 className="text-md sm:text-xl font-semibold text-white">Beiramar Shopping</h3>
             </div>
           </SwiperSlide>
 
@@ -143,9 +143,9 @@ export default function Empresa() {
                 alt="Logo Parceiro 6"
                 width={200}
                 height={200}
-                className="mx-auto h-[200px] mb-4"
+                className="mx-auto h-[150px] sm:h-[200px] mb-4"
               />
-              <h3 className="text-lg font-semibold text-white">Construtora Kreich</h3>
+              <h3 className="text-md sm:text-xl font-semibold text-white">Construtora Kreich</h3>
             </div>
           </SwiperSlide>
 
@@ -157,9 +157,9 @@ export default function Empresa() {
                 alt="Logo Parceiro 7"
                 width={200}
                 height={200}
-                className="mx-auto h-[200px] mb-4"
+                className="mx-auto h-[150px] sm:h-[200px] mb-4"
               />
-              <h3 className="text-lg font-semibold text-white">RLC Construtora</h3>
+              <h3 className="text-md sm:text-xl font-semibold text-white">RLC Construtora</h3>
             </div>
           </SwiperSlide>
 
@@ -171,9 +171,9 @@ export default function Empresa() {
                 alt="Logo Parceiro 8"
                 width={200}
                 height={200}
-                className="mx-auto h-[200px] mb-4"
+                className="mx-auto h-[150px] sm:h-[200px] mb-4"
               />
-              <h3 className="text-lg font-semibold text-white">MRV Engenharia</h3>
+              <h3 className="text-md sm:text-xl font-semibold text-white">MRV Engenharia</h3>
             </div>
           </SwiperSlide>
 
@@ -184,9 +184,9 @@ export default function Empresa() {
                 alt="Logo Parceiro 9"
                 width={200}
                 height={200}
-                className="mx-auto h-[200px] mb-4"
+                className="mx-auto h-[150px] sm:h-[200px] mb-4"
               />
-              <h3 className="text-lg font-semibold text-white">Adore Incorporadora</h3>
+              <h3 className="text-md sm:text-xl font-semibold text-white">Adore Incorporadora</h3>
             </div>
           </SwiperSlide>
 
@@ -197,9 +197,9 @@ export default function Empresa() {
                 alt="Logo Parceiro 10"
                 width={200}
                 height={200}
-                className="mx-auto h-[200px] mb-4"
+                className="mx-auto h-[150px] sm:h-[200px] mb-4"
               />
-              <h3 className="text-lg font-semibold text-white">Construtora Spindola</h3>
+              <h3 className="text-md sm:text-xl font-semibold text-white">Construtora Spindola</h3>
             </div>
           </SwiperSlide>
 
@@ -210,9 +210,9 @@ export default function Empresa() {
                 alt="Logo Parceiro 11"
                 width={200}
                 height={200}
-                className="mx-auto h-[200px] mb-4"
+                className="mx-auto h-[150px] sm:h-[200px] mb-4"
               />
-              <h3 className="text-lg font-semibold text-white">Nedana Empreendimentos</h3>
+              <h3 className="text-md sm:text-xl font-semibold text-white">Nedana Empreendimentos</h3>
             </div>
           </SwiperSlide>
         </Swiper>
@@ -231,7 +231,10 @@ export default function Empresa() {
             <Swiper
               modules={[Pagination, Navigation, Autoplay]}
               spaceBetween={10}
-              slidesPerView={2}
+              slidesPerView={1}
+              breakpoints={{
+                668: { slidesPerView: 2 },
+              }}
               loop={true}
               autoplay={{ delay: 3000 }}
               pagination={{ clickable: true, bulletClass: "swiper-pagination-bullet custom-bullet" }}

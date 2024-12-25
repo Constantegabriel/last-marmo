@@ -165,8 +165,8 @@ export default function Contato() {
         <div className="text-4xl text-gray-800 font-bold p-6 mt-16 text-center">Onde Estamos Localizados</div>
 
         {/* Mapa do Google */}
-        <div className="shadow-lg mx-auto mt-4 overflow-hidden">
-          <div className="w-full h-[500px]">
+        <div className="shadow-lg w-[95%] mx-auto mt-4 overflow-hidden">
+          <div className="w-full mx-auto border-gray-800 border-[1px] h-[500px]">
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3538.9135600586115!2d-48.6523692!3d-27.505828!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95275338e43117e7%3A0x593940f8a5d7ac1c!2sMarmoraria%20Florian%C3%B3polis!5e0!3m2!1sen!2sbr!4v1690375038293!5m2!1sen!2sbr&z=12"
               width="100%"
