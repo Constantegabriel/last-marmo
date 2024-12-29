@@ -1,6 +1,10 @@
 import nodemailer from "nodemailer";
 import { NextResponse } from "next/server";
 
+// Carregar variáveis de ambiente
+import dotenv from "dotenv";
+dotenv.config();
+
 export async function POST(req) {
   try {
     const { name, email, tel, message } = await req.json();
@@ -10,14 +14,14 @@ export async function POST(req) {
       port: 465,
       secure: true,
       auth: {
-        user: "",
-        pass: "",
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS,
       },
     });
 
     await transporter.sendMail({
-      from: `"Contato Site Marmoraria" <contato.rizontec@gmail.com>`,
-      to: "vita1dagraca@gmail.com",
+      from: `"Contato Site Marmoraria" <${process.env.EMAIL_USER}>`,
+      to: "vendas.marmorariafpolis@gmail.com",
       subject: "Novo Contato pelo Formulário do Site",
       html: `
         <div style="background-color:#1F2937; color:#ffffff; padding:20px; font-family:sans-serif;">
