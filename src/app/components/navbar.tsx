@@ -136,10 +136,6 @@ export default function Navbar() {
               />
             </Link>
           </div>
-          <div className="text-3xl border-b-[2px] border-white text-white font-bold mb-6">
-            Páginas
-          </div>
-
           <button
             onClick={() => setMenuOpen(false)}
             className="absolute top-6 right-6 text-[35px] text-white"

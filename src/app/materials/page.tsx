@@ -248,15 +248,20 @@ export default function MaterialsPage() {
       </nav>
   
       <div className="flex-1 pt-[160px] lg:pt-[20px] md:mr-[350px] bg-gray-50">
-        <div className="p-6">
-          <h1 className="text-3xl md:text-4xl font-extrabold text-left text-gray-800 mb-6">
-            Descubra Alguns dos nossos Materiais Exclusivos
-          </h1>
-          <p className="text-left text-gray-600 text-lg max-w-3xl mb-12">
-            Selecione as pedras que você gostou e adicione ao carrinho. Em
-            seguida, vá até seu carrinho e clique em <b>'Enviar para WhatsApp'</b> para que possamos consultar e preparar
-            seu orçamento personalizado!
-          </p>
+        <div className="p-2 sm:p-6">
+        <div className="relative w-full h-[300px] md:h-[400px] lg:h-[400px] overflow-hidden">
+          <img src="img/ban6.jpg" alt="Materiais Exclusivos" className="w-full h-full object-cover" />
+          <div className="absolute inset-0 bg-gradient-to-r from-gray-900/70 to-transparent"></div>
+          <div className="absolute inset-0 flex flex-col justify-center items-start px-6 md:px-12 lg:px-20 text-white">
+            <h1 className="text-2xl md:text-4xl font-extrabold text-left mb-4">
+              Descubra Alguns dos Nossos Materiais Exclusivos
+            </h1>
+            <p className="text-left text-md lg:text-lg max-w-3xl">
+              Escolha suas pedras favoritas e adicione ao carrinho. Depois, vá até o carrinho e clique em <b>Enviar para WhatsApp</b> para solicitar seu orçamento!
+            </p>
+          </div>
+        </div>
+
   
           {/* Renderização por categorias */}
           {["Granito", "Quartzo", "Quartzito", "Mármore"].map((category) => (
@@ -264,22 +269,27 @@ export default function MaterialsPage() {
               <h2 className="text-3xl font-bold text-center border-b-[4px] w-[50%] lg:w-[30%] pb-4 border-gray-800 mx-auto text-gray-800 mt-20 mb-20">
                 {category}s
               </h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8">
+              <div className="grid grid-cols-2 xl:grid-cols-3 gap-2 sm:gap-8">
                 {materials
                   .filter((material) => material.category === category)
                   .map((material) => (
-                    <div key={material.id} className="rounded-lg hover:shadow-xl transition-transform transform hover:scale-105">
-                      <div className="w-full h-56 relative">
-                        <Image src={material.imageUrl} alt={material.title} fill className="object-cover" />
+                    <div key={material.id} className="overflow-hidden transition-transform">
+                      <div className="w-full h-[180px] sm:h-56 md:h-[200px] lg:w-full lg:aspect-square relative group">
+                        <Image
+                          src={material.imageUrl}
+                          alt={material.title}
+                          fill
+                          className="object-cover transition-transform duration-300 group-hover:scale-110"
+                        />
                       </div>
-                      <div className="p-4">
+                      <div className="py-4 sm:p-4 md:p-0 md:py-4">
                         <h3 className="text-xl font-semibold text-gray-800">{material.title}</h3>
                         <p className="text-gray-500 text-sm mt-2">{material.description}</p>
                         <button
                           onClick={() => addToCart(material)}
                           className="w-full bg-gray-800 hover:bg-gray-900 text-white text-lg font-medium mt-4 py-2 rounded-md flex items-center justify-center transition-colors"
                         >
-                          <AiOutlineShoppingCart className="mr-2" /> Adicionar ao Carrinho
+                          <AiOutlineShoppingCart className="mr-2" /> <span className="hidden sm:flex md:hidden lg:flex pr-[5px]">Adicionar ao</span>Carrinho
                         </button>
                       </div>
                     </div>

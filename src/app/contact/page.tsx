@@ -44,21 +44,21 @@ export default function Contato() {
   };
 
   return (
-    <section className="bg-gray-200 pt-[200px] min-h-screen py-16 md:px-20">
+    <section className="bg-gray-200 pt-[150px] lg:pt-[180px] min-h-screen py-16 md:px-20">
       <div className="max-w-full md:max-w-7xl mx-auto">
         {/* Bloco de Contato e Formulário Unificados */}
-        <div className="bg-gray-800 text-white p-10 shadow-lg grid grid-cols-1 md:grid-cols-2 gap-16">
+        <div className="lg:bg-gray-800 text-gray-800 lg:text-white p-10 lg:shadow-lg grid grid-cols-1 lg:grid-cols-2 gap-16">
           {/* Seção de Contato */}
           <div>
             <h2 className="text-5xl font-bold mb-6">Contate-nos</h2>
-            <p className="mb-10 text-xl text-gray-100">
+            <p className="mb-10 text-xl text-gray-800 lg:text-white">
               Tem alguma ideia incrível ou precisa de um orçamento? Entre em contato, adoraríamos ouvir mais sobre o seu projeto e como podemos ajudar!
             </p>
 
             <div className="space-y-4">
               <p>
                 <strong>Email:</strong>{" "}
-                <a href="mailto:vendas.marmorariafpolis@gmail.com" className="text-gray-300 hover:text-white">
+                <a href="mailto:vendas.marmorariafpolis@gmail.com" className="text-gray-800 lg:text-white hover:text-gray-700 lg:hover:text-gray-100">
                   vendas.marmorariafpolis@gmail.com
                 </a>
               </p>
@@ -90,7 +90,7 @@ export default function Contato() {
           <div>
             <form onSubmit={handleSubmit}>
               <div className="mb-6">
-                <label htmlFor="name" className="block text-gray-100 font-medium mb-2">
+                <label htmlFor="name" className="block text-gray-800 lg:text-white font-medium mb-2">
                   Nome
                 </label>
                 <input
@@ -98,13 +98,13 @@ export default function Contato() {
                   id="name"
                   name="name"
                   placeholder="Digite seu nome*"
-                  className="w-full px-4 py-2 text-white bg-gray-800 bg-opacity-0 border border-white focus:outline-none"
+                  className="w-full px-4 py-2 text-gray-800 lg:text-white bg-gray-800 bg-opacity-0 border border-gray-800 lg:border-white focus:outline-none"
                   required
                 />
               </div>
 
               <div className="mb-6">
-                <label htmlFor="email" className="block text-gray-100 font-medium mb-2">
+                <label htmlFor="email" className="block text-gray-800 lg:text-white font-medium mb-2">
                   Email
                 </label>
                 <input
@@ -112,13 +112,13 @@ export default function Contato() {
                   id="email"
                   name="email"
                   placeholder="Digite seu email*"
-                  className="w-full px-4 py-2 text-white bg-gray-800 bg-opacity-0 border border-white focus:outline-none"
+                  className="w-full px-4 py-2 text-gray-800 lg:text-white bg-gray-800 bg-opacity-0 border border-gray-800 lg:border-white focus:outline-none"
                   required
                 />
               </div>
 
               <div className="mb-6">
-                <label htmlFor="tel" className="block text-gray-100 font-medium mb-2">
+                <label htmlFor="tel" className="block text-gray-800 lg:text-white font-medium mb-2">
                   Telefone
                 </label>
                 <input
@@ -126,13 +126,13 @@ export default function Contato() {
                   id="tel"
                   name="tel"
                   placeholder="Digite seu número de telefone*"
-                  className="w-full px-4 py-2 text-white bg-gray-800 bg-opacity-0 border border-white focus:outline-none"
+                  className="w-full px-4 py-2 text-gray-800 lg:text-white bg-gray-800 bg-opacity-0 border border-gray-800 lg:border-white focus:outline-none"
                   required
                 />
               </div>
 
               <div className="mb-6">
-                <label htmlFor="message" className="block text-gray-100 font-medium mb-2">
+                <label htmlFor="message" className="block text-gray-800 lg:text-white font-medium mb-2">
                   Mensagem
                 </label>
                 <textarea
@@ -140,12 +140,12 @@ export default function Contato() {
                   name="message"
                   rows={4}
                   placeholder="Deixe uma mensagem para nossa equipe*"
-                  className="w-full px-4 py-2 text-white bg-gray-800 bg-opacity-0 border border-white focus:outline-none"
+                  className="w-full px-4 py-2 text-gray-800 lg:text-white bg-gray-800 bg-opacity-0 border border-gray-800 lg:border-white focus:outline-none"
                   required
                 ></textarea>
               </div>
 
-              <button type="submit" className="px-6 py-3 bg-opacity-0 border-2 border-white bg-gray-700 hover:bg-gray-900 text-white rounded-full transition">
+              <button type="submit" className="px-6 py-3 font-bold bg-opacity-0 border-2 border-gray-800 lg:border-white bg-gray-700 hover:bg-gray-900 hover:text-white text-gray-800 lg:text-white rounded-full transition">
                 Enviar Mensagem
               </button>
             </form>
