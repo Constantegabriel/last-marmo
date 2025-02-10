@@ -17,16 +17,22 @@
       "static/chunks/main-app.js",
       "static/chunks/app/materials/page.js"
     ],
-    "/contact/page": [
+    "/services/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/contact/page.js"
+      "static/css/app/services/page.css",
+      "static/chunks/app/services/page.js"
     ],
     "/enterprise/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/css/app/enterprise/page.css",
       "static/chunks/app/enterprise/page.js"
+    ],
+    "/_not-found/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/_not-found/page.js"
     ]
   }
 }

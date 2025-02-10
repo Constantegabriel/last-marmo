@@ -39,6 +39,23 @@ body {
   }
 }
 
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.cart-open {
+  animation: slideUp 0.4s ease-out forwards;
+}
+
+.cart-closed {
+  display: none;
+}
+
 .custom-bullet {
   background-color: #2d3748; /* gray-800 */
   opacity: 0.7;
