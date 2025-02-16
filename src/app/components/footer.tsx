@@ -59,7 +59,7 @@ export default function Footer() {
         {/* Contato */}
         <div>
           <h1 className="text-lg font-bold">FALE CONOSCO</h1>
-          <p className="text-sm mt-4">Fone: (48) 3238-0505</p>
+          <p className="text-sm mt-4">Fone:  (48) 3243-0000 - (48) 3039-8806</p>
           <p className="text-sm mt-2">WhatsApp: (48) 99844-2768</p>
           <p className="text-sm mt-2">Email: vendas.marmorariafpolis@gmail.com</p>
         </div>
@@ -77,11 +77,12 @@ export default function Footer() {
           </Link>{" "}
           &{" "}
           <Link
-            href="https://www.instagram.com/constante.design_/?utm_source=ig_web_button_share_sheet"
+            href="https://www.instagram.com/rizontec?igsh=MWtmdDJyc2owNnIwYw=="
             className="underline hover:text-blue-400 transition"
           >
-            Constante Design
-          </Link>
+            RizonTec
+          </Link>{" "}
+
         </h1>
       </div>
     </footer>
